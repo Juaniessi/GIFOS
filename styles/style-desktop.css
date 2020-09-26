@@ -1,3 +1,14 @@
+html {
+  --primary-color: #572EE5;
+  --secondary-color: #50E3C2;
+  --tertiary-color: #9CAFC3;
+  --bg-menu: rgba(87,46,229,0.90);
+  --bg-carousel: #F3F5F8;
+  --bg: #FFFFFF;
+  --bg-border: #572EE5;
+  --text-color: #000000;
+  --icon-hover-color: #FFFFFF; }
+
 @media screen and (min-width: 1024px) {
   header {
     justify-content: space-between;
@@ -31,9 +42,18 @@
             line-height: auto;
             letter-spacing: 0;
             text-align: center; }
-          header nav ul li .btncrear {
-            margin: 0;
-            align-content: center; }
+          header nav ul li .btnCrear {
+            display: inline-block;
+            cursor: pointer;
+            width: 54px;
+            height: 54px;
+            border-radius: 50px;
+            background: none;
+            border: 1px solid #572EE5;
+            background-color: white; }
+            header nav ul li .btnCrear .fa-plus {
+              color: #572EE5;
+              font-size: 1rem; }
 
   main .intro h1 {
     font-size: 2.2rem;
@@ -88,15 +108,29 @@
     font-size: 34px; }
   main .trending p {
     width: 100%; }
-  main .trending .leftbtn {
-    display: initial;
-    width: 20px; }
-  main .trending .rightbtn {
-    display: initial;
-    width: 20px; }
-  main .trending .carousel {
-    width: 90%; }
-    main .trending .carousel img {
-      width: 100%; } }
+  main .trending .carrouselWraper {
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    margin-top: 2.5rem; }
+    main .trending .carrouselWraper .buttonSlider {
+      display: initial;
+      height: 40px;
+      width: 40px;
+      border: 1px solid var(--primary-color);
+      background: var(--bg-carousel);
+      transform: translate(0, 100px); }
+      main .trending .carrouselWraper .buttonSlider .fa-chevron-left, main .trending .carrouselWraper .buttonSlider .fa-chevron-right {
+        color: var(--primary-color);
+        font-size: 1.25rem; }
+        main .trending .carrouselWraper .buttonSlider .fa-chevron-left:hover, main .trending .carrouselWraper .buttonSlider .fa-chevron-right:hover {
+          color: var(--icon-hover-color); }
+      main .trending .carrouselWraper .buttonSlider:hover {
+        background-color: var(--primary-color); }
+    main .trending .carrouselWraper .carousel {
+      width: 90%; }
+      main .trending .carrouselWraper .carousel img {
+        width: 100%; } }
 
 /*# sourceMappingURL=style-desktop.css.map */

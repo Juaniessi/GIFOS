@@ -58,6 +58,9 @@ header{
                     &:last-child{
                         display: none;
                     }
+                    button{
+                        display: none;
+                    }
                     a{
                         color: white;
                     }
@@ -135,12 +138,12 @@ main{
                 align-content: stretch;
                 align-items: center;
                 #lupaDeBusqueda{
-                    width: 1.25rem;
-                    margin-left: -.45rem;
+                    color: $mainViolet;
+                    font-size: 1.5rem;
                 }
                 #cerrarBusqueda{
-                    width: 1.25rem;
-                    display: none;
+                    color: $mainViolet;
+                    font-size: 1.5rem;
                 }
             }
             
@@ -207,18 +210,23 @@ main{
             width: 85%;
             margin: 0.5rem 0 2rem 0;
         }
-        .carousel{
-            width: 90%;
+        .carrouselWraper{
+            margin-top: 2rem;
+            .buttonSlider{
+                display: none;
+            }
+            .carousel{
+                display: flex;
+                flex-flow: column wrap;
+                justify-content: center;
                 img{
-                    width: 20%;
+                    width: 70%;
+                    height: 15rem;
+                    display: flex;
+                    align-self: center;
                 }
-        }
-        .leftbtn{
-            display: none;
-        }
-        .rightbtn{
-            display: none;
-        }
+            }
+        } 
     }
 }
 

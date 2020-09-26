@@ -4,3 +4,19 @@ $mainGreen: #50E3C2;
 $colorTrending: #F3F5F8;
 $monse: "Montserrat", "sans-serif";
 $roboto: "Roboto", "sans-serif";
+
+//colores pasados a variables
+
+html {
+    --primary-color: #572EE5;
+    --secondary-color: #50E3C2;
+    --tertiary-color: #9CAFC3;
+
+    --bg-menu: rgba(87,46,229,0.90);
+    --bg-carousel: #F3F5F8;
+    --bg: #FFFFFF;
+    --bg-border: #572EE5;
+
+    --text-color: #000000;
+    --icon-hover-color: #FFFFFF;
+}

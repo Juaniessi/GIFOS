@@ -62,19 +62,28 @@ async function doSearch(search){ //función qu ehace la búsqueda
 };
 
 function fillingGifCard(gif, contenedor){ //función que rellena las tyerjetas de gifs clonando el nodo
+    
     let gifCardTemplateClone= gifCardTemplate.cloneNode(true);
-    gifCardTemplateClone.children[1].src=gif.images.fixed_height.url; //gif es el data[x]
-    gifCardTemplateClone.children[1].alt=gif.title;
-    gifCardTemplateClone.children[0].children[0].textContent=gif.title;
-    gifCardTemplateClone.children[0].children[1].textContent=gif.username;
-/*     gifCardTemplateClone.children[2].children[0].src=;
-    gifCardTemplateClone.children[2].children[1].src=;
-    gifCardTemplateClone.children[2].children[2].src=; */
 
+    let trueGif = gifCardTemplateClone.children[1];
+    trueGif.src=gif.images.fixed_height.url; //gif es el data[x]
 
+    let gifAlt = gifCardTemplateClone.children[1];
+    gifAlt.alt=gif.title;
 
+    let gifTitle = gifCardTemplateClone.children[0].children[0];
+    gifTitle.textContent=gif.title;
 
-    //FALTA BANDA, SEGUIR
+    let gifUserName = gifCardTemplateClone.children[0].children[1];
+    gifUserName.textContent=gif.username;
+
+    //FALTA HACER EVENT LISTENERS
+    let gifFav = gifCardTemplateClone.children[2].children[0];
+    let gifDownload = gifCardTemplateClone.children[2].children[1];
+    let gifExpand = gifCardTemplateClone.children[2].children[2];
+
+    //FALTA BANDA, SEGUIR... Seguir más
+    
     contenedor.appendChild(gifCardTemplateClone);
 };
 
@@ -92,14 +101,14 @@ searchBar.addEventListener("focusout", iconUnSwitch);
 function iconSwitch(){
     lupasearch.style.flexDirection="row-reverse";
     imgClose.style.display="flex";
-    imgLupa.setAttribute("src", "img/icon-search-active.svg")
+    imgLupa.style.color="#9CAFC3"
 }
 
 //función para cuando hago click afuera de la barra
 function iconUnSwitch(){
     lupasearch.style.flexDirection="row";
     imgClose.style.display="none";
-    imgLupa.setAttribute("src", "img/icon-search.svg");
+    imgLupa.style.color="#572EE5"
     contenedorDeSugerencias.innerHTML="";
 }
 

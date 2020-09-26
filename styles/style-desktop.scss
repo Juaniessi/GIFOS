@@ -35,9 +35,19 @@
                         letter-spacing: 0;
                         text-align: center;
                     }
-                   .btncrear{
-                        margin: 0;
-                        align-content: center;
+                   .btnCrear{
+                    display: inline-block;
+                    cursor: pointer;
+                    width: 54px;
+                    height: 54px;
+                    border-radius: 50px;
+                    background: none;
+                    border: 1px solid $mainViolet;
+                    background-color: white;
+                        .fa-plus{
+                            color: $mainViolet;
+                            font-size: 1rem;
+                        }
                     }
                 }
             }
@@ -118,18 +128,35 @@
             p{
                 width: 100%;
             }
-            .leftbtn{
-                display: initial;
-                width: 20px;
-            }
-            .rightbtn{
-                display: initial;
-                width: 20px;
-            }
-            .carousel{
-                width: 90%;
-                img{
-                    width: 100%;
+            .carrouselWraper{
+                width: 100%;
+                display: flex;
+                flex-flow: row wrap;
+                justify-content: center;
+                margin-top: 2.5rem;
+                .buttonSlider{
+                    display: initial;
+                    height: 40px;
+                    width: 40px;
+                    border: 1px solid var(--primary-color);
+                    background: var(--bg-carousel);
+                    transform: translate(0, 100px);
+                    .fa-chevron-left, .fa-chevron-right{
+                        color: var(--primary-color);
+                        font-size: 1.25rem;
+                        &:hover{
+                            color: var(--icon-hover-color);
+                        }
+                    }
+                    &:hover{
+                        background-color: var(--primary-color);
+                    }
+                }
+                .carousel{
+                    width: 90%;
+                    img{
+                        width: 100%;
+                    }
                 }
             }
         }
