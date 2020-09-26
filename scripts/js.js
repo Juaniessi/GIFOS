@@ -42,17 +42,23 @@ async function autoCompletar(){
         }
 };
 
+doSearch("tmnt"); // lo hicimos para dejar de bucar como locos
+
 //Función de buscar, sale con fritas
 
 let gifCardTemplate = document.getElementById("gifCardTemplate").content.firstElementChild; //me traigo el articulo completo dentro del template
 let ctnOfGif = document.getElementById("ctnOfGif");
 
-async function doSearch(search){ //función qu ehace la búsqueda
+async function doSearch(search){ //función que hace la búsqueda
     try {
         const resp = await fetch(`https://api.giphy.com/v1/gifs/search?q=${search}&api_key=${apiKey}&limit=${12}`); //ver el limit, esta en 12
         const respParsed = await resp.json();
-        console.log(respParsed);
-        
+
+        ctnOfGif.textContent = "";
+
+        let ctnTitle = document.getElementById("searchTitle");
+        ctnTitle.textContent = searchBar.value;
+
         respParsed.data.forEach( gif=>{    //recorre el array completo y llena las tarjetas "n" veces con fillinfGifCard
             fillingGifCard(gif, ctnOfGif)}
             ) 
@@ -65,10 +71,10 @@ function fillingGifCard(gif, contenedor){ //función que rellena las tyerjetas d
     
     let gifCardTemplateClone= gifCardTemplate.cloneNode(true);
 
-    let trueGif = gifCardTemplateClone.children[1];
+    let trueGif = gifCardTemplateClone.children[1].children[0];
     trueGif.src=gif.images.fixed_height.url; //gif es el data[x]
 
-    let gifAlt = gifCardTemplateClone.children[1];
+    let gifAlt = gifCardTemplateClone.children[1].children[0];
     gifAlt.alt=gif.title;
 
     let gifTitle = gifCardTemplateClone.children[0].children[0];
@@ -135,5 +141,3 @@ async function getTrendingTopics() {
 }
 
 getTrendingTopics();
-
-

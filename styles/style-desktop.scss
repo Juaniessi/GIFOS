@@ -121,6 +121,25 @@
                 }
             }
         }
+        #searchTitleResult{
+        
+            #ctnOfGif{ //seteo estilos al titulo de la busqueda
+                display: flex;
+                flex-flow: row wrap;
+                width: 100%;
+                .gifArticle{
+                    background-color: lightgrey;
+                    position: relative;
+                    width: 25%;
+                    .gifLoadedCtn{
+                        .gifLoaded{
+                            width: 100%;
+                            height: 20rem;
+                        }
+                    }
+                }
+            }  
+        }
         .trending{
             h2{
                 font-size: 34px;

@@ -49,6 +49,9 @@
                 <h3>Trending:</h3>
                 <p id="trendingWords"></p>
             </article>
+        </section>
+        <section id="searchTitleResult">
+            <h2 id="searchTitle"></h2>
             <div id="ctnOfGif">
                 <template id="gifCardTemplate"> <!-- template de la tarjetita de gif -->
                     <article class="gifArticle"> <!-- METERLE CLASE A TODO -->
@@ -56,12 +59,15 @@
                             <h4 class="gifTitle"></h4>
                             <span class="gifUser"></span>
                         </div>
-                        <img src="" alt="" class="gifLoaded">
+                        <div class="gifLoadedCtn">
+                            <img src="" alt="" class="gifLoaded">
+                        </div>
                         <div class="gifBtns">
                             <button class="gifFav"><i class="far fa-heart"></i></button>
                             <button class="gifDownload"><i class="fas fa-download"></i></button>
                             <button class="gifExpand"><i class="fas fa-expand-alt"></i></button>
                         </div>
+                        <div class="filter"></div>
                     </article>
                 </template>
             </div>
