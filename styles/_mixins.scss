@@ -1,0 +1,20 @@
+@mixin behave-vertical {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+@mixin behave-horizontal {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+  }
+  
+@mixin word-bundle($font-size, $color, $font-weight, $line-height) {
+    font-size: $font-size;
+    color: $color;
+    font-weight: $font-weight;
+    line-height: $line-height;
+  }

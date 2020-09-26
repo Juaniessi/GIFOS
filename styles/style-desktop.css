@@ -1,0 +1,102 @@
+@media screen and (min-width: 1024px) {
+  header {
+    justify-content: space-between;
+    padding: 0; }
+    header .closebtn {
+      display: none; }
+    header .menubtn {
+      display: none; }
+    header nav {
+      display: flex;
+      width: 45%;
+      max-width: 30rem;
+      flex-flow: row wrap; }
+      header nav ul {
+        display: flex;
+        flex-flow: row wrap;
+        align-self: flex-end; }
+        header nav ul li {
+          display: flex;
+          margin: 1rem;
+          align-self: center; }
+          header nav ul li:hover:not(:last-child) {
+            border-bottom: 1px solid #50E3C2; }
+          header nav ul li:active:not(:last-child) {
+            border: none;
+            color: #FF9CAFC3; }
+          header nav ul li a {
+            font-size: 13px;
+            color: #572EE5;
+            font-weight: bold;
+            line-height: auto;
+            letter-spacing: 0;
+            text-align: center; }
+          header nav ul li .btncrear {
+            margin: 0;
+            align-content: center; }
+
+  main .intro h1 {
+    font-size: 2.2rem;
+    max-width: 600px; }
+  main .intro img {
+    width: 40%;
+    margin-top: 1rem;
+    max-width: 550px; }
+  main .intro .searchbar {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    width: 100%;
+    max-width: 550px; }
+    main .intro .searchbar #contenedorBusquedas {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      width: 100%; }
+      main .intro .searchbar #contenedorBusquedas .search {
+        width: 80%;
+        text-align: left; }
+      main .intro .searchbar #contenedorBusquedas img {
+        margin-top: 0;
+        justify-content: flex-end; }
+    main .intro .searchbar #sugestionCtn {
+      display: flex;
+      flex-flow: column wrap;
+      width: 100%; }
+      main .intro .searchbar #sugestionCtn #divDeSugerencias {
+        display: flex;
+        flex-flow: row wrap; }
+        main .intro .searchbar #sugestionCtn #divDeSugerencias img {
+          margin-left: 0.8rem; }
+      main .intro .searchbar #sugestionCtn p {
+        display: flex;
+        text-align: left;
+        justify-content: start;
+        margin: .5rem; }
+  main .trends h3 {
+    margin-top: 4.5rem;
+    font-size: 24px;
+    margin-bottom: .5rem; }
+  main .trends p {
+    font-size: 20px;
+    width: 80%;
+    margin-bottom: 6rem;
+    justify-content: center; }
+    main .trends p br {
+      display: none; }
+  main .trending h2 {
+    font-size: 34px; }
+  main .trending p {
+    width: 100%; }
+  main .trending .leftbtn {
+    display: initial;
+    width: 20px; }
+  main .trending .rightbtn {
+    display: initial;
+    width: 20px; }
+  main .trending .carousel {
+    width: 90%; }
+    main .trending .carousel img {
+      width: 100%; } }
+
+/*# sourceMappingURL=style-desktop.css.map */

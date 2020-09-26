@@ -1,0 +1,137 @@
+@import "variables";
+@import "mixins";
+@media screen and (min-width: 1024px){
+    header{
+        justify-content: space-between;
+        padding: 0;
+        .closebtn{
+            display: none;
+        }
+        .menubtn{
+            display: none;
+        }
+        nav{
+            display: flex;
+            width: 45%;
+            max-width: 30rem;
+            flex-flow: row wrap;
+            ul {
+                display: flex;
+                flex-flow: row wrap;
+                align-self: flex-end;
+                li{
+                    display: flex;
+                    margin: 1rem;
+                    align-self: center; //centrar en altura los botones del nav
+                    &:hover:not(:last-child){
+                        border-bottom: 1px solid $mainGreen;
+                    }
+                    &:active:not(:last-child){
+                        border: none;
+                        color: #FF9CAFC3;
+                    }
+                    a{
+                        @include word-bundle(13px, $mainViolet, bold, auto); //aprendiendo a usar mixins, cual quier cosa
+                        letter-spacing: 0;
+                        text-align: center;
+                    }
+                   .btncrear{
+                        margin: 0;
+                        align-content: center;
+                    }
+                }
+            }
+        }
+    }
+    main{
+        .intro{
+            h1{
+                font-size: 2.2rem;
+                max-width: 600px;
+            }
+            img{
+                width: 40%;
+                margin-top: 1rem;
+                max-width: 550px;
+            }
+            .searchbar{
+                display: flex;
+                flex-flow: row wrap;
+                align-items: center;
+                width: 100%;
+                max-width: 550px;
+                #contenedorBusquedas{
+                    display:flex;
+                    flex-direction: row;
+                    flex-wrap: wrap;
+                    width: 100%;
+                    .search{
+                        width: 80%;
+                        text-align: left;
+                    }
+                    img{
+                        margin-top: 0;
+                        justify-content: flex-end;
+                    }
+                }
+                #sugestionCtn{
+                    display: flex;
+                    flex-flow: column wrap;
+                    width:100%;
+                    #divDeSugerencias{
+                        display: flex;
+                        flex-flow: row wrap;
+                        img{
+                            margin-left: 0.8rem;
+                        }
+                    }
+                    p{
+                        display: flex;
+                        text-align: left;
+                        justify-content: start;
+                        margin: .5rem;
+                    }
+
+                }
+            }
+        }
+        .trends{
+            h3{
+                margin-top: 4.5rem;
+                font-size: 24px;
+                margin-bottom: .5rem;
+            }
+            p{
+                font-size: 20px;
+                width: 80%;
+                margin-bottom: 6rem;
+                justify-content: center;
+                br {
+                    display: none;
+                }
+            }
+        }
+        .trending{
+            h2{
+                font-size: 34px;
+            }
+            p{
+                width: 100%;
+            }
+            .leftbtn{
+                display: initial;
+                width: 20px;
+            }
+            .rightbtn{
+                display: initial;
+                width: 20px;
+            }
+            .carousel{
+                width: 90%;
+                img{
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/style-desktop.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <title>GIFOS</title>
+</head>
+<body>
+    <header>
+        <picture>
+            <source srcset="img/logo-mobile.svg" media="(max-width: 1023px">
+            <source srcset="img/logo-desktop.svg" media="(min-width: 1024px)">
+            <img srcset="img/logo-mobile.svg" alt="Logo">
+        </picture>
+        <!--Uso la etiqueta source que permite alternar imagenes segun el view port-->
+            <input type="checkbox" id="checkbox"/>
+            <label for="checkbox">
+                <img class="menubtn" src="img/burger.svg" alt="tres rayitas">
+                <img class="closebtn"src="img/close.svg" alt="cruz burger">
+            </label>
+        <nav>
+             <ul>
+                <li><a href="#modonocturno">Modo Nocturno</a></li>
+                <li><a href="#favoritos">Favoritos</a></li>
+                <li><a href="#misgifos">Mis GIFOS</a></li>
+                <li><img class="btncrear" src="img/button-crear-gifo.svg" alt="crear-gifo"></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="intro">
+            <h1>Inspírate, busca, guarda, y crea los mejores <span>GIFOS</span></h1>
+            <img src="img/ilustra_header.svg" alt="Personas felices buscando GIFs">
+            <div id="searchbarctn" class="searchbar">
+                <div id="contenedorBusquedas">
+                    <i class="fas fa-times" id="cerrarBusqueda"></i>
+                    <!-- <img src="img/close.svg" alt="cerrar" id="cerrarBusqueda"> -->
+                    <input type="text" class="search" id="search-bar" placeholder="Busca GIFOS y más">
+                    <i class="fas fa-search" id="lupaDeBusqueda"></i>
+                    <!-- <img src="img/icon-search.svg" alt="Lupa" id="lupaDeBusqueda"> -->
+                    <label for="search"></label>
+                </div>
+                <div id="sugestionCtn"></div>
+            </div>
+            <article class="trends">
+                <h3>Trending:</h3>
+                <p id="trendingWords"></p>
+            </article>
+            <div id="ctnOfGif">
+                <template id="gifCardTemplate"> <!-- template de la tarjetita de gif -->
+                    <article class="gifArticle"> <!-- METERLE CLASE A TODO -->
+                        <div class="gifInfo">
+                            <h4 class="gifTitle"></h4>
+                            <span class="gifUser"></span>
+                        </div>
+                        <img src="" alt="" class="gifLoaded">
+                        <div class="gifBtns">
+                            <button class="gifFav"></button>
+                            <button class="gifDownload"></button>
+                            <button class="gifExpand"></button>
+                        </div>
+                    </article>
+                </template>
+            </div>
+        </section>
+        <section class="trending">
+            <h2>Trending GIFOS</h2>
+            <p>Mira los últimos <br>GIFOS de nuestra comunidad.</p>
+            <div>    
+                <img src="img/button-slider-left.svg" alt="botón izquierda" class="leftbtn">
+            </div>
+            <div class="escroleable">
+                <div class="carousel">
+                    <img src="../cat.gif" alt="cat-gif">
+                </div>
+            </div>
+            <div>
+                <img src="img/Button-Slider-right.svg" alt="boton derecha" class="rightbtn">
+            </div>
+        </section>
+    </main>
+    <footer>
+        <h3>Compartir en:</h3>
+        <div class="share">
+            <a href=""><i class="fab fa-facebook-f"></i></a>
+            <a href=""><i class="fab fa-twitter"></i></a>
+            <a href=""><i class="fab fa-instagram"></i></a>
+        </div>
+        <p>&copy; GIFOS 2020 All Rights Reserved.</p>
+    </footer>
+    <script src="scripts/js.js"></script>
+    <script src="https://kit.fontawesome.com/ccc8f7a871.js" crossorigin="anonymous"></script>
+</body>
+</html>
