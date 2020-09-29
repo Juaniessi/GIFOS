@@ -1,13 +1,22 @@
 html {
-  --primary-color: #572EE5;
-  --secondary-color: #50E3C2;
-  --tertiary-color: #9CAFC3;
-  --bg-menu: rgba(87,46,229,0.90);
-  --bg-carousel: #F3F5F8;
-  --bg: #FFFFFF;
-  --bg-border: #572EE5;
-  --text-color: #000000;
-  --icon-hover-color: #FFFFFF; }
+  --background: #FFF;
+  --trending_background: #F3F5F8;
+  --main_text_color: #572EE5;
+  --small_text_color: #000;
+  --drawer_background: #572EE5;
+  --body_border: #572EE5;
+  --fancy_border: #572EE5;
+  --btn_hover: white; }
+
+html[data-theme='dark'] {
+  --background: #37383C;
+  --trending_background: #222326;
+  --main_text_color: #FFF;
+  --small_text_color: #FFF;
+  --drawer_background: #000;
+  --body_border: #000;
+  --fancy_border: #FFF;
+  --btn_hover: black; }
 
 @media screen and (min-width: 1024px) {
   header {
@@ -37,7 +46,7 @@ html {
             color: #FF9CAFC3; }
           header nav ul li a {
             font-size: 13px;
-            color: #572EE5;
+            color: var(--main_text_color);
             font-weight: bold;
             line-height: auto;
             letter-spacing: 0;
@@ -49,10 +58,10 @@ html {
             height: 54px;
             border-radius: 50px;
             background: none;
-            border: 1px solid #572EE5;
-            background-color: white; }
+            border: 1px solid var(--main_text_color);
+            background-color: transparent; }
             header nav ul li .btnCrear .fa-plus {
-              color: #572EE5;
+              color: var(--main_text_color);
               font-size: 1rem; }
 
   main .intro h1 {
@@ -112,6 +121,25 @@ html {
       background-color: lightgrey;
       position: relative;
       width: 25%; }
+      main #searchTitleResult #ctnOfGif .gifArticle:hover .filter, main #searchTitleResult #ctnOfGif .gifArticle:hover .gifBtns, main #searchTitleResult #ctnOfGif .gifArticle:hover .gifInfo {
+        display: initial;
+        position: absolute; }
+      main #searchTitleResult #ctnOfGif .gifArticle .gifInfo {
+        display: none;
+        bottom: 2rem;
+        left: 0.5rem; }
+      main #searchTitleResult #ctnOfGif .gifArticle .gifBtns {
+        display: none;
+        right: 3rem;
+        top: 1rem; }
+      main #searchTitleResult #ctnOfGif .gifArticle .filter {
+        background-color: #572EE5;
+        opacity: 0.7;
+        display: none;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0; }
       main #searchTitleResult #ctnOfGif .gifArticle .gifLoadedCtn .gifLoaded {
         width: 100%;
         height: 20rem; }

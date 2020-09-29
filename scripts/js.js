@@ -42,7 +42,7 @@ async function autoCompletar(){
         }
 };
 
-doSearch("tmnt"); // lo hicimos para dejar de bucar como locos
+doSearch("samurai champloo"); // lo hicimos para dejar de bucar como locos
 
 //Función de buscar, sale con fritas
 
@@ -141,3 +141,6 @@ async function getTrendingTopics() {
 }
 
 getTrendingTopics();
+
+//modo noche
+

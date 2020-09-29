@@ -31,7 +31,7 @@
                         color: #FF9CAFC3;
                     }
                     a{
-                        @include word-bundle(13px, $mainViolet, bold, auto); //aprendiendo a usar mixins, cual quier cosa
+                        @include word-bundle(13px, var(--main_text_color), bold, auto); //aprendiendo a usar mixins, cual quier cosa
                         letter-spacing: 0;
                         text-align: center;
                     }
@@ -42,10 +42,10 @@
                     height: 54px;
                     border-radius: 50px;
                     background: none;
-                    border: 1px solid $mainViolet;
-                    background-color: white;
+                    border: 1px solid var(--main_text_color);
+                    background-color: transparent;
                         .fa-plus{
-                            color: $mainViolet;
+                            color: var(--main_text_color);
                             font-size: 1rem;
                         }
                     }
@@ -131,6 +131,31 @@
                     background-color: lightgrey;
                     position: relative;
                     width: 25%;
+                    &:hover {
+                        .filter, .gifBtns, .gifInfo{
+                            display: initial;
+                            position: absolute;
+                        }
+                    }
+                    .gifInfo{
+                        display: none;
+                        bottom: 2rem;
+                        left: 0.5rem;
+                    } 
+                    .gifBtns{
+                        display: none;
+                        right: 3rem;
+                        top: 1rem;
+                    }
+                    .filter{
+                        background-color: #572EE5;
+                        opacity: 0.7;
+                        display: none;
+                        width: 100%;
+                        height: 100%;
+                        top: 0;
+                        left: 0;
+                    }
                     .gifLoadedCtn{
                         .gifLoaded{
                             width: 100%;

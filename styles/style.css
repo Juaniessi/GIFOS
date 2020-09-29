@@ -1,13 +1,32 @@
 html {
-  --primary-color: #572EE5;
-  --secondary-color: #50E3C2;
-  --tertiary-color: #9CAFC3;
-  --bg-menu: rgba(87,46,229,0.90);
-  --bg-carousel: #F3F5F8;
-  --bg: #FFFFFF;
-  --bg-border: #572EE5;
-  --text-color: #000000;
-  --icon-hover-color: #FFFFFF; }
+  --background: #FFF;
+  --trending_background: #F3F5F8;
+  --main_text_color: #572EE5;
+  --small_text_color: #000;
+  --drawer_background: #572EE5;
+  --body_border: #572EE5;
+  --fancy_border: #572EE5;
+  --btn_hover: white; }
+
+html[data-theme='dark'] {
+  --background: #37383C;
+  --trending_background: #222326;
+  --main_text_color: #FFF;
+  --small_text_color: #FFF;
+  --drawer_background: #000;
+  --body_border: #000;
+  --fancy_border: #FFF;
+  --btn_hover: black; }
+
+html.themeTransition,
+html.themeTransition *,
+html.themeTransition *:before,
+html.themeTransition *:after {
+  transition: all 500ms;
+  transition-delay: 0; }
+
+body {
+  background-color: var(--background); }
 
 * {
   margin: 0;
@@ -25,10 +44,10 @@ header {
   flex-flow: row wrap;
   justify-content: space-between;
   align-items: center;
-  border-top: solid #572EE5 0.3rem;
+  border-top: solid var(--body_border) 0.3rem;
   width: 100%;
   position: fixed;
-  background: white;
+  background: var(--background);
   z-index: 10;
   top: 0;
   padding-bottom: 1rem; }
@@ -41,7 +60,7 @@ header {
       display: flex;
       flex-flow: column wrap;
       width: 100%;
-      background: rgba(87, 46, 229, 0.9);
+      background: var(--drawer_background);
       top: 5.375rem;
       position: fixed;
       height: 100vh; }
@@ -93,7 +112,7 @@ main {
     width: 100%; }
     main .intro h1 {
       font-size: 1.5rem;
-      color: #572EE5;
+      color: var(--main_text_color);
       line-height: 33px;
       width: 73%;
       align-self: center; }
@@ -103,7 +122,7 @@ main {
       width: 73%;
       align-self: center; }
     main .intro .searchbar {
-      border: 1px solid #572EE5;
+      border: 1px solid var(--fancy_border);
       border-radius: 30px;
       padding: 1rem 2rem 1rem 2rem;
       width: 90%;
@@ -113,7 +132,8 @@ main {
         font-family: "Roboto", "sans-serif";
         font-size: 1rem;
         text-align: left;
-        width: 80%; }
+        width: 80%;
+        background-color: transparent; }
       main .intro .searchbar #contenedorBusquedas {
         display: flex;
         flex-direction: row;
@@ -122,10 +142,10 @@ main {
         align-content: stretch;
         align-items: center; }
         main .intro .searchbar #contenedorBusquedas #lupaDeBusqueda {
-          color: #572EE5;
+          color: var(--main_text_color);
           font-size: 1.5rem; }
         main .intro .searchbar #contenedorBusquedas #cerrarBusqueda {
-          color: #572EE5;
+          color: var(--main_text_color);
           font-size: 1.5rem; }
       main .intro .searchbar #sugestionCtn {
         display: flex;
@@ -142,7 +162,7 @@ main {
           margin: .5rem 0; }
   main .trends h3 {
     font-size: 1rem;
-    color: #572EE5;
+    color: var(--main_text_color);
     line-height: 25px;
     margin-top: 2rem; }
   main .trends p {
@@ -150,7 +170,7 @@ main {
     display: flex;
     font-weight: 500;
     font-size: 0.9rem;
-    color: #572EE5;
+    color: var(--main_text_color);
     line-height: 25px;
     width: 60%;
     margin-bottom: 2.9rem;
@@ -162,7 +182,7 @@ main {
     main #searchTitleResult h2 {
       font-family: "Montserrat", "sans-serif";
       font-size: 25px;
-      color: #572EE5;
+      color: var(--main_text_color);
       text-align: center;
       line-height: 40px; }
       main #searchTitleResult h2:first-letter {
@@ -175,9 +195,6 @@ main {
         background-color: lightgrey;
         position: relative;
         width: 50%; }
-        main #searchTitleResult #ctnOfGif .gifArticle:hover .filter, main #searchTitleResult #ctnOfGif .gifArticle:hover .gifBtns, main #searchTitleResult #ctnOfGif .gifArticle:hover .gifInfo {
-          display: initial;
-          position: absolute; }
         main #searchTitleResult #ctnOfGif .gifArticle .gifInfo {
           display: none;
           bottom: 2rem;
@@ -202,19 +219,19 @@ main {
     flex-flow: column wrap;
     justify-content: center;
     align-items: center;
-    background-color: #F3F5F8;
+    background-color: var(--trending_background);
     padding-bottom: 5rem;
     padding-top: 2.8rem; }
     main .trending h2 {
       font-weight: 700;
       font-size: 1.25rem;
-      color: #572EE5;
+      color: var(--main_text_color);
       text-align: center;
       line-height: 30px; }
     main .trending p {
       font-family: "Roboto", "sans-serif";
       font-size: 1rem;
-      color: #000000;
+      color: var(--small_text_color);
       text-align: center;
       line-height: 23px;
       width: 85%;
@@ -238,12 +255,12 @@ footer {
   display: flex;
   flex-flow: column wrap;
   align-items: center;
-  border-bottom: 0.3rem solid #572EE5; }
+  border-bottom: 0.3rem solid var(--body_border); }
   footer h3 {
     font-family: "Roboto", "sans-serif";
     font-weight: 200;
     font-size: 15px;
-    color: #000000;
+    color: var(--small_text_color);
     letter-spacing: 0; }
   footer .share {
     display: flex;
@@ -254,11 +271,11 @@ footer {
     footer .share i {
       color: #CDD6E0; }
       footer .share i:hover {
-        color: #572EE5; }
+        color: var(--main_text_color); }
   footer p {
     font-family: "Roboto", "sans-serif";
     font-size: 14px;
-    color: #000000;
+    color: var(--small_text_color);
     letter-spacing: 0;
     line-height: 20px;
     margin-bottom: 1.2rem; }

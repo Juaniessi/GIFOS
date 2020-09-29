@@ -1,5 +1,6 @@
 @import "variables";
 @import "mixins";
+@import "layout";
 *{
     margin: 0;
     padding: 0;
@@ -18,10 +19,10 @@ header{
     flex-flow: row wrap;
     justify-content: space-between;
     align-items: center;
-    border-top: solid $mainViolet .3rem;
+    border-top: solid var(--body_border) .3rem;
     width: 100%;
     position: fixed;
-    background: white;
+    background: var(--background);
     z-index: 10;
     top: 0;
     padding-bottom: 1rem;
@@ -35,7 +36,7 @@ header{
             display:flex;
             flex-flow: column wrap;
             width: 100%;
-            background: $fondoMenuLight;
+            background: var(--drawer_background);
             top: 5.375rem;
             position: fixed;
             height: 100vh;
@@ -105,7 +106,7 @@ main{
         width: 100%;
         h1{
             font-size: 1.5rem;
-            color: $mainViolet;
+            color: var(--main_text_color);
             line-height: 33px;
             width: 73%;
             align-self: center;
@@ -118,7 +119,7 @@ main{
             align-self: center;
         }
         .searchbar{
-            border: 1px solid $mainViolet;
+            border: 1px solid var(--fancy_border);
             border-radius: 30px;
             padding: 1rem 2rem 1rem 2rem;
             width: 90%;
@@ -129,6 +130,7 @@ main{
                 font-size: 1rem;
                 text-align: left;
                 width: 80%;
+                background-color: transparent; //hace invisible el cuadro de busqueda
             }
             #contenedorBusquedas{
                 display:flex;
@@ -138,11 +140,11 @@ main{
                 align-content: stretch;
                 align-items: center;
                 #lupaDeBusqueda{
-                    color: $mainViolet;
+                    color: var(--main_text_color);
                     font-size: 1.5rem;
                 }
                 #cerrarBusqueda{
-                    color: $mainViolet;
+                    color: var(--main_text_color);
                     font-size: 1.5rem;
                 }
             }
@@ -169,7 +171,7 @@ main{
     .trends{
         h3{
             font-size: 1rem;
-            color: $mainViolet;
+            color: var(--main_text_color);
             line-height: 25px;
             margin-top: 2rem; 
         }
@@ -178,7 +180,7 @@ main{
             display: flex;
             font-weight: 500;
             font-size: 0.9rem;
-            color: $mainViolet;
+            color: var(--main_text_color);
             line-height: 25px;
             width: 60%;
             margin-bottom: 2.9rem;
@@ -193,7 +195,7 @@ main{
         h2{
             font-family: $monse;
             font-size: 25px;
-            color: $mainViolet;
+            color: var(--main_text_color);
             text-align: center;
             line-height: 40px;
             &:first-letter {
@@ -208,12 +210,6 @@ main{
                 background-color: lightgrey;
                 position: relative;
                 width: 50%;
-                &:hover {
-                    .filter, .gifBtns, .gifInfo{
-                        display: initial;
-                        position: absolute;
-                    }
-                }
                 .gifInfo{
                     display: none;
                     bottom: 2rem;
@@ -248,20 +244,20 @@ main{
         flex-flow: column wrap;
         justify-content: center;
         align-items: center;
-        background-color: $colorTrending;
+        background-color: var(--trending_background);
         padding-bottom: 5rem;
         padding-top: 2.8rem;
         h2{
             font-weight: 700;
             font-size: 1.25rem;
-            color: $mainViolet;
+            color: var(--main_text_color);
             text-align: center;
             line-height: 30px;
         }
         p{
             font-family: $roboto;
             font-size: 1rem;
-            color: #000000;
+            color: var(--small_text_color);
             text-align: center;
             line-height: 23px;
             width: 85%;
@@ -292,12 +288,12 @@ footer{
     display: flex;
     flex-flow: column wrap;
     align-items: center;
-    border-bottom: .3rem solid $mainViolet;
+    border-bottom: .3rem solid var(--body_border);
     h3{
         font-family: $roboto;
         font-weight: 200;
         font-size: 15px;
-        color: #000000;
+        color: var(--small_text_color);
         letter-spacing: 0;
     }
     .share{
@@ -309,14 +305,14 @@ footer{
         i{
             color: #CDD6E0;
             &:hover{
-                color: $mainViolet;
+                color: var(--main_text_color);
             }
         }
     }
     p{
         font-family: $roboto;
         font-size: 14px;
-        color: #000000;
+        color: var(--small_text_color);
         letter-spacing: 0;
         line-height: 20px;
         margin-bottom: 1.2rem;
