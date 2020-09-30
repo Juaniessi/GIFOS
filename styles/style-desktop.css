@@ -85,9 +85,6 @@ html[data-theme='dark'] {
       main .intro .searchbar #contenedorBusquedas .search {
         width: 80%;
         text-align: left; }
-      main .intro .searchbar #contenedorBusquedas img {
-        margin-top: 0;
-        justify-content: flex-end; }
     main .intro .searchbar #sugestionCtn {
       display: flex;
       flex-flow: column wrap;
@@ -101,7 +98,8 @@ html[data-theme='dark'] {
         display: flex;
         text-align: left;
         justify-content: start;
-        margin: .5rem; }
+        margin: .5rem;
+        color: #9CAFC3; }
   main .trends h3 {
     margin-top: 4.5rem;
     font-size: 24px;
@@ -124,14 +122,28 @@ html[data-theme='dark'] {
       main #searchTitleResult #ctnOfGif .gifArticle:hover .filter, main #searchTitleResult #ctnOfGif .gifArticle:hover .gifBtns, main #searchTitleResult #ctnOfGif .gifArticle:hover .gifInfo {
         display: initial;
         position: absolute; }
-      main #searchTitleResult #ctnOfGif .gifArticle .gifInfo {
-        display: none;
-        bottom: 2rem;
-        left: 0.5rem; }
+      main #searchTitleResult #ctnOfGif .gifArticle .gifInfo h4 {
+        color: #FFFFFF;
+        font-size: 1rem; }
+      main #searchTitleResult #ctnOfGif .gifArticle .gifInfo span {
+        color: #FFFFFF;
+        font-size: .8rem; }
       main #searchTitleResult #ctnOfGif .gifArticle .gifBtns {
         display: none;
-        right: 3rem;
-        top: 1rem; }
+        right: 1rem;
+        top: 1rem;
+        z-index: 1000; }
+        main #searchTitleResult #ctnOfGif .gifArticle .gifBtns button {
+          cursor: pointer;
+          border: 1px solid #CED7E1;
+          border-radius: 6px;
+          background: #FFFFFF;
+          opacity: 0.7;
+          height: 32px;
+          width: 32px; }
+          main #searchTitleResult #ctnOfGif .gifArticle .gifBtns button .fa-heart, main #searchTitleResult #ctnOfGif .gifArticle .gifBtns button .fa-download, main #searchTitleResult #ctnOfGif .gifArticle .gifBtns button .fa-expand-alt {
+            color: var(--deselect-icons-color);
+            font-size: 1.3rem; }
       main #searchTitleResult #ctnOfGif .gifArticle .filter {
         background-color: #572EE5;
         opacity: 0.7;

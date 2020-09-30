@@ -79,10 +79,6 @@
                         width: 80%;
                         text-align: left;
                     }
-                    img{
-                        margin-top: 0;
-                        justify-content: flex-end;
-                    }
                 }
                 #sugestionCtn{
                     display: flex;
@@ -100,6 +96,7 @@
                         text-align: left;
                         justify-content: start;
                         margin: .5rem;
+                        color: #9CAFC3;
                     }
 
                 }
@@ -138,14 +135,33 @@
                         }
                     }
                     .gifInfo{
-                        display: none;
-                        bottom: 2rem;
-                        left: 0.5rem;
-                    } 
+                        h4{
+                            color: #FFFFFF;
+                            font-size: 1rem;                      
+                        }
+                        span{
+                            color: #FFFFFF;
+                            font-size: .8rem;
+                        }
+                    }
                     .gifBtns{
                         display: none;
-                        right: 3rem;
+                        right: 1rem;
                         top: 1rem;
+                        z-index: 1000;
+                        button{
+                            cursor: pointer;
+                            border: 1px solid #CED7E1; //ver este color
+                            border-radius: 6px;
+                            background: #FFFFFF;
+                            opacity: 0.7;
+                            height: 32px;
+                            width: 32px;
+                            .fa-heart, .fa-download, .fa-expand-alt{
+                                color: var(--deselect-icons-color);
+                                font-size: 1.3rem;
+                            }
+                        }
                     }
                     .filter{
                         background-color: #572EE5;

@@ -67,7 +67,9 @@ async function doSearch(search){ //función que hace la búsqueda
     }
 };
 
-function fillingGifCard(gif, contenedor){ //función que rellena las tyerjetas de gifs clonando el nodo
+//función que rellena las tyerjetas de gifs clonando el nodo
+
+function fillingGifCard(gif, contenedor){ 
     
     let gifCardTemplateClone= gifCardTemplate.cloneNode(true);
 
@@ -107,14 +109,12 @@ searchBar.addEventListener("focusout", iconUnSwitch);
 function iconSwitch(){
     lupasearch.style.flexDirection="row-reverse";
     imgClose.style.display="flex";
-    imgLupa.style.color="#9CAFC3"
 }
 
 //función para cuando hago click afuera de la barra
 function iconUnSwitch(){
     lupasearch.style.flexDirection="row";
     imgClose.style.display="none";
-    imgLupa.style.color="#572EE5"
     contenedorDeSugerencias.innerHTML="";
 }
 
@@ -128,13 +128,26 @@ let textTrending = document.getElementById("trendingWords"); //me traigo el p de
 async function getTrendingTopics() {
     try {
         const response = await fetch(`https://api.giphy.com/v1/trending/searches?&api_key=${apiKey}`);
+        let text = await response.json();        
+        text.data.splice(5,20); //le quitamos las ultimas 15 a data        
+        /* textTrending.textContent = text.data.join(", "); //metemos el texto y separamos el texto */
+        text.data.forEach(trendingWord => {
+            let spanCreado = document.createElement("span");
+            
+            if (trendingWord==text.data[text.data.length-1]) //saca la coma al ultimo elemento
+            spanCreado.textContent = trendingWord;
+            else{
+                spanCreado.textContent = `${trendingWord}, `; //pone comas a todos los elementos
+            }
 
-        let text = await response.json();
+            textTrending.appendChild(spanCreado);
+            spanCreado.addEventListener("click", ()=>{
+            searchBar.value = trendingWord;
+            doSearch(trendingWord);
+                } 
+            )
+        })
         
-        text.data.splice(5,20); //le quitamos las ultimas 15 a data
-        
-        textTrending.textContent = text.data.join(", "); //metemos el texto y separamos el texto
-
     } catch (error) {
         console.log(error);
     }
@@ -142,5 +155,22 @@ async function getTrendingTopics() {
 
 getTrendingTopics();
 
-//modo noche
+//borrar busqueda
+
+imgClose.addEventListener('mousedown', function() { //usar mouse down porque hay un focus con lso switches
+    searchBar.value="";
+    /* searchBar.style.display="initial"; */
+    contenedorDeSugerencias.innerHTML="";
+  });
+
+//tocar enter para buscar
+
+searchBar.addEventListener("keyup", (e)=>{
+if(e.keyCode==13){
+    doSearch(searchBar.value);
+    }
+});
+
+//click a los trendings
+
 

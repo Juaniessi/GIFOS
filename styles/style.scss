@@ -6,7 +6,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: $monse;
-    text-align: center;
+    /* text-align: center; */
 }
 
 a{
@@ -68,14 +68,14 @@ header{
                 }
             }
         }
-        &:checked~label{
+        /* &:checked~label{ //esto lo dejo de usar, porque ahora uso una sola imagen
             .closebtn{
                 display: initial;
             }
             .menubtn{
                 display: none;
             }
-        }
+        } */
     }
 
     label{
@@ -131,6 +131,10 @@ main{
                 text-align: left;
                 width: 80%;
                 background-color: transparent; //hace invisible el cuadro de busqueda
+                color: var(--small_text_color);
+                &:focus{
+                    outline: none;
+                }
             }
             #contenedorBusquedas{
                 display:flex;
@@ -146,6 +150,7 @@ main{
                 #cerrarBusqueda{
                     color: var(--main_text_color);
                     font-size: 1.5rem;
+                    display: none;
                 }
             }
             
@@ -177,7 +182,6 @@ main{
         }
         p{
             margin: 0 auto;
-            display: flex;
             font-weight: 500;
             font-size: 0.9rem;
             color: var(--main_text_color);
@@ -213,8 +217,22 @@ main{
                 .gifInfo{
                     display: none;
                     bottom: 2rem;
-                    left: 0.5rem;
-                } 
+                    left: 1rem;
+                    z-index: 1000;
+                    h4{
+                        font-family: 'Roboto', sans-serif;
+                        font-weight: bold;
+                        font-size: .8rem;
+                        color: var(--text-color);
+                        text-align: left;
+                    }
+                    span{
+                        font-family: 'Roboto', sans-serif;
+                        font-size: .6rem;
+                        color: var(--text-color);
+                        text-align: left;
+                    }
+                }
                 .gifBtns{
                     display: none;
                     right: 3rem;

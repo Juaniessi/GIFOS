@@ -33,7 +33,7 @@ body {
   padding: 0;
   box-sizing: border-box;
   font-family: "Montserrat", "sans-serif";
-  text-align: center; }
+  /* text-align: center; */ }
 
 a {
   color: initial;
@@ -55,7 +55,15 @@ header {
     margin: 1rem 0 0 1.8rem; }
   header input[type="checkbox"] {
     display: none;
-    margin: 0 1rem 0 0; }
+    margin: 0 1rem 0 0;
+    /* &:checked~label{ //esto lo dejo de usar, porque ahora uso una sola imagen
+        .closebtn{
+            display: initial;
+        }
+        .menubtn{
+            display: none;
+        }
+    } */ }
     header input[type="checkbox"]:checked ~ nav {
       display: flex;
       flex-flow: column wrap;
@@ -85,10 +93,6 @@ header {
             display: none; }
           header input[type="checkbox"]:checked ~ nav ul li a {
             color: white; }
-    header input[type="checkbox"]:checked ~ label .closebtn {
-      display: initial; }
-    header input[type="checkbox"]:checked ~ label .menubtn {
-      display: none; }
   header label {
     display: flex;
     margin-right: 1.8rem; }
@@ -133,7 +137,10 @@ main {
         font-size: 1rem;
         text-align: left;
         width: 80%;
-        background-color: transparent; }
+        background-color: transparent;
+        color: var(--small_text_color); }
+        main .intro .searchbar .search:focus {
+          outline: none; }
       main .intro .searchbar #contenedorBusquedas {
         display: flex;
         flex-direction: row;
@@ -146,7 +153,8 @@ main {
           font-size: 1.5rem; }
         main .intro .searchbar #contenedorBusquedas #cerrarBusqueda {
           color: var(--main_text_color);
-          font-size: 1.5rem; }
+          font-size: 1.5rem;
+          display: none; }
       main .intro .searchbar #sugestionCtn {
         display: flex;
         flex-flow: column wrap; }
@@ -167,7 +175,6 @@ main {
     margin-top: 2rem; }
   main .trends p {
     margin: 0 auto;
-    display: flex;
     font-weight: 500;
     font-size: 0.9rem;
     color: var(--main_text_color);
@@ -198,7 +205,19 @@ main {
         main #searchTitleResult #ctnOfGif .gifArticle .gifInfo {
           display: none;
           bottom: 2rem;
-          left: 0.5rem; }
+          left: 1rem;
+          z-index: 1000; }
+          main #searchTitleResult #ctnOfGif .gifArticle .gifInfo h4 {
+            font-family: 'Roboto', sans-serif;
+            font-weight: bold;
+            font-size: .8rem;
+            color: var(--text-color);
+            text-align: left; }
+          main #searchTitleResult #ctnOfGif .gifArticle .gifInfo span {
+            font-family: 'Roboto', sans-serif;
+            font-size: .6rem;
+            color: var(--text-color);
+            text-align: left; }
         main #searchTitleResult #ctnOfGif .gifArticle .gifBtns {
           display: none;
           right: 3rem;
