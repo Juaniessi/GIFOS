@@ -120,7 +120,6 @@ function iconUnSwitch(){
 
 //evento para auto compeltar con las sugerencias
 
-
 //Agrego las secciones de trending más buscadas
 
 let textTrending = document.getElementById("trendingWords"); //me traigo el p de trending
@@ -140,6 +139,7 @@ async function getTrendingTopics() {
                 spanCreado.textContent = `${trendingWord}, `; //pone comas a todos los elementos
             }
 
+            //click a los trendings
             textTrending.appendChild(spanCreado);
             spanCreado.addEventListener("click", ()=>{
             searchBar.value = trendingWord;
@@ -171,6 +171,5 @@ if(e.keyCode==13){
     }
 });
 
-//click a los trendings
-
+//ver más
 
