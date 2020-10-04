@@ -88,6 +88,36 @@
                 </button>
             </div>
         </section>
+        <section class="recordGif">
+            <article class="articleRecord">
+                <div class="imgCamera">
+                    <img src="img/camara.svg" alt="camara" class="camara">
+                    <img src="img/element-luz-camara.svg" alt="luz de la camara" class="luzCamara">
+                </div>
+                <div class="videoSquare">
+                    <span class="corner-left corner-top"></span>
+                    <span class="corner-right corner-top"></span>
+                    <span class="corner-left corner-bottom"></span>
+                    <span class="corner-right corner-bottom"></span>
+                    <video src="" id="gif-capture" class="hidden" controls autoplay></video>
+                    <h4 id="create-title">Aquí podrás <br>crear tus propios GIFOS</h4>
+                    <p id="create-subtitle">¡Crea tu GIFO en sólo 3 pasos! <br>(sólo necesitas una cámara para grabar un video)</p>
+                </div>
+                <div class="anotherDiv">
+                    <div class="numbersDiv">
+                        <span class="number">1</span>
+                        <span class="number">2</span>
+                        <span class="number">3</span>
+                    </div>
+                    <div id="counter" class="hidden"> 
+                        <span></span>
+                    </div>
+                    <img src="img/pelicula.svg" alt="rollo de pelicula" class="filmIcon">
+                </div>
+                <button id="start-btn" class="startButton">Comenzar</button>
+                
+            </article>
+        </section>
     </main>
     <footer>
         <h3>Compartir en:</h3>
@@ -99,6 +129,7 @@
         <p>&copy; GIFOS 2020 All Rights Reserved.</p>
     </footer>
     <script src="scripts/js.js"></script>
-    <script src="scripts/light-dark-mode.js"></script>  
+    <script src="scripts/light-dark-mode.js"></script>
+    <script src="scripts/recordGif.js"></script>  
 </body>
 </html>

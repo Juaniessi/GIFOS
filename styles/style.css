@@ -6,7 +6,8 @@ html {
   --drawer_background: #572EE5;
   --body_border: #572EE5;
   --fancy_border: #572EE5;
-  --btn_hover: white; }
+  --btn_hover: white;
+  --mainGreen: #50E3C2; }
 
 html[data-theme='dark'] {
   --background: #37383C;
@@ -28,6 +29,13 @@ html.themeTransition *:after {
 body {
   background-color: var(--background); }
 
+@keyframes blinking {
+  0% {
+    opacity: 1; }
+  50% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
 * {
   margin: 0;
   padding: 0;
@@ -138,9 +146,10 @@ main {
         text-align: left;
         width: 80%;
         background-color: transparent;
-        color: var(--small_text_color); }
-        main .intro .searchbar .search:focus {
-          outline: none; }
+        color: var(--small_text_color);
+        /* &:focus{  
+            outline: none;
+        } */ }
       main .intro .searchbar #contenedorBusquedas {
         display: flex;
         flex-direction: row;
@@ -268,6 +277,8 @@ main {
           height: 15rem;
           display: flex;
           align-self: center; }
+  main .hidden {
+    display: none; }
 
 footer {
   padding: 3rem 0rem 1rem 0rem;

@@ -3,8 +3,6 @@ let themeToggleLink = document.querySelector("#modoNocturno");
 
 themeToggleLink.addEventListener("click", (e) => themeToggler(e));
 
-console.log(themeToggleLink);
-
 function themeToggler(e) {
   e.preventDefault();
   trans();

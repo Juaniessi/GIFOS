@@ -132,9 +132,10 @@ main{
                 width: 80%;
                 background-color: transparent; //hace invisible el cuadro de busqueda
                 color: var(--small_text_color);
-                &:focus{
+                //esto le saca el cuadrado de la busqueda, pero no se debe sacar porque es malo para la accesibilidad
+                /* &:focus{  
                     outline: none;
-                }
+                } */
             }
             #contenedorBusquedas{
                 display:flex;
@@ -298,6 +299,9 @@ main{
                 }
             }
         } 
+    }
+    .hidden{
+        display: none;
     }
 }
 

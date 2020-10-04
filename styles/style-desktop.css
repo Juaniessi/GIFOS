@@ -6,7 +6,8 @@ html {
   --drawer_background: #572EE5;
   --body_border: #572EE5;
   --fancy_border: #572EE5;
-  --btn_hover: white; }
+  --btn_hover: white;
+  --mainGreen: #50E3C2; }
 
 html[data-theme='dark'] {
   --background: #37383C;
@@ -41,7 +42,7 @@ html[data-theme='dark'] {
           text-transform: uppercase;
           align-self: center; }
           header nav ul li:hover:not(:last-child) {
-            border-bottom: 1px solid #50E3C2; }
+            border-bottom: 1px solid var(--mainGreen); }
           header nav ul li:active:not(:last-child) {
             border: none;
             color: #FF9CAFC3; }
@@ -183,17 +184,128 @@ html[data-theme='dark'] {
     main .trending .carrouselWraper .carousel {
       width: 90%; }
       main .trending .carrouselWraper .carousel img {
-        width: 100%; } }
-footer {
-  flex-flow: row wrap;
-  padding-bottom: 3rem;
-  justify-content: space-between; }
-  footer p {
-    margin: 0 3rem 0 0; }
-  footer h3 {
-    margin: 0 0 0 5rem; }
-  footer .share {
-    margin: 0 0 0 -25rem;
-    justify-content: space-evenly; }
+        width: 100%; }
+  main .recordGif {
+    width: 100%;
+    padding-right: 10rem; }
+    main .recordGif .articleRecord {
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: center; }
+      main .recordGif .articleRecord .imgCamera {
+        display: flex;
+        align-content: center;
+        /* .camara{
+           
+        } */ }
+        main .recordGif .articleRecord .imgCamera .luzCamara {
+          animation: blinking .2s infinite; }
+      main .recordGif .articleRecord .videoSquare {
+        width: 43rem;
+        border: 1px solid var(--fancy_border);
+        overflow: hidden;
+        position: relative;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        align-items: center; }
+        main .recordGif .articleRecord .videoSquare #gif-capture {
+          width: 75%;
+          height: 75%; }
+        main .recordGif .articleRecord .videoSquare .corner-right, main .recordGif .articleRecord .videoSquare .corner-left {
+          height: 25px;
+          width: 27px;
+          display: inline-block;
+          position: absolute; }
+        main .recordGif .articleRecord .videoSquare .corner-right {
+          border-right: 1px solid var(--mainGreen);
+          right: 1.5rem; }
+        main .recordGif .articleRecord .videoSquare .corner-left {
+          border-left: 1px solid var(--mainGreen);
+          left: 1.5rem; }
+        main .recordGif .articleRecord .videoSquare .corner-top {
+          border-top: 1px solid var(--mainGreen);
+          top: 1.5rem; }
+        main .recordGif .articleRecord .videoSquare .corner-bottom {
+          border-bottom: 1px solid var(--mainGreen);
+          bottom: 1.5rem; }
+        main .recordGif .articleRecord .videoSquare h4 {
+          font-family: 'Montserrat', sans-serif;
+          font-size: bold;
+          font-size: 25px;
+          color: var(--main_text_color);
+          text-align: center;
+          line-height: 35px; }
+        main .recordGif .articleRecord .videoSquare p {
+          font-family: 'Roboto', sans-serif;
+          font-size: 1rem;
+          color: var(--small_text_color);
+          text-align: center;
+          line-height: 29px; }
+      main .recordGif .articleRecord .anotherDiv {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        align-items: center;
+        width: 100%; }
+        main .recordGif .articleRecord .anotherDiv .numbersDiv {
+          display: flex;
+          justify-content: center;
+          margin-left: 24rem;
+          width: 20%; }
+          main .recordGif .articleRecord .anotherDiv .numbersDiv .number {
+            margin-left: 1.5rem;
+            text-align: center;
+            width: 2rem;
+            height: 2rem;
+            line-height: 2rem;
+            border-radius: 50%;
+            background: none;
+            border: 1px solid var(--fancy_border);
+            background-color: transparent; }
+          main .recordGif .articleRecord .anotherDiv .numbersDiv .isCurrent {
+            background-color: var(--main_text_color);
+            color: var(--trending_background); }
+          main .recordGif .articleRecord .anotherDiv .numbersDiv .special-hover:hover {
+            border-bottom: 3px solid #50E3C2; }
+        main .recordGif .articleRecord .anotherDiv .counter {
+          transform: translate(145px);
+          color: var(--main_text_color);
+          letter-spacing: 0;
+          text-align: center;
+          font-family: "Montserrat", "sans-serif";
+          font-weight: 700; }
+        main .recordGif .articleRecord .anotherDiv .filmIcon {
+          transform: translate(280px); }
+      main .recordGif .articleRecord #start-btn {
+        cursor: pointer;
+        outline: none;
+        border: 1px solid var(--fancy_border);
+        border-radius: 25px;
+        background: none;
+        text-transform: uppercase;
+        font-family: 'Montserrat', sans-serif;
+        color: var(--main_text_color);
+        font-size: 13px;
+        font-weight: bold;
+        height: 3rem;
+        width: 7.9rem;
+        margin-bottom: 2rem;
+        margin-top: -2rem; }
+        main .recordGif .articleRecord #start-btn:hover {
+          color: var(--icon-hover-color);
+          background-color: var(--main_text_color); }
+
+  footer {
+    flex-flow: row wrap;
+    padding-bottom: 3rem;
+    justify-content: space-between; }
+    footer p {
+      margin: 0 3rem 0 0; }
+    footer h3 {
+      margin: 0 0 0 5rem; }
+    footer .share {
+      margin: 0 0 0 -25rem;
+      justify-content: space-evenly; } }
 
 /*# sourceMappingURL=style-desktop.css.map */

@@ -42,7 +42,7 @@ async function autoCompletar(){
         }
 };
 
-doSearch("samurai champloo"); // lo hicimos para dejar de bucar como locos
+//doSearch("cowboy beebop"); // lo hicimos para dejar de bucar como locos
 
 //Función de buscar, sale con fritas
 
@@ -166,7 +166,7 @@ imgClose.addEventListener('mousedown', function() { //usar mouse down porque hay
 //tocar enter para buscar
 
 searchBar.addEventListener("keyup", (e)=>{
-if(e.keyCode==13){
+if(e.keyCode===13 || e.keyCode===9){ //9 es para el enter de los teclados swiftkey de android
     doSearch(searchBar.value);
     }
 });

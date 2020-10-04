@@ -25,7 +25,7 @@
                     text-transform: uppercase;
                     align-self: center; //centrar en altura los botones del nav
                     &:hover:not(:last-child){
-                        border-bottom: 1px solid $mainGreen;
+                        border-bottom: 1px solid var(--mainGreen);
                     }
                     &:active:not(:last-child){
                         border: none;
@@ -221,21 +221,152 @@
                 }
             }
         }
+        .recordGif{
+            width: 100%;
+            padding-right: 10rem;;
+            .articleRecord{
+                display: flex;
+                flex-flow: row wrap;
+                justify-content: center;
+                .imgCamera{
+                    display: flex;
+                    align-content: center;
+                    /* .camara{
+                       
+                    } */
+                    .luzCamara{                       
+                        animation: blinking .2s infinite;                       
+                    }
+                }
+                .videoSquare{
+                    width: 43rem;
+                    border: 1px solid var(--fancy_border);
+                    overflow: hidden;
+                    position: relative;
+                    @include behave-horizontal;
+                    #gif-capture{
+                        width: 75%;
+                        height: 75%;
+                    }
+                    .corner-right, .corner-left {
+                        height: 25px;
+                        width: 27px;
+                        display: inline-block;
+                        position: absolute;
+                      }
+                      .corner-right {
+                        border-right: 1px solid var(--mainGreen);
+                        right: 1.5rem;
+                      }
+                      .corner-left {
+                        border-left: 1px solid var(--mainGreen);
+                        left: 1.5rem;
+                      }
+                      .corner-top {
+                        border-top: 1px solid var(--mainGreen);
+                        top: 1.5rem;
+                      }
+                      .corner-bottom {
+                        border-bottom: 1px solid var(--mainGreen);
+                        bottom: 1.5rem;
+                      }
+                    h4{
+                        font-family: 'Montserrat', sans-serif;
+                        font-size: bold;
+                        font-size: 25px;
+                        color: var(--main_text_color);
+                        text-align: center;
+                        line-height: 35px;
+                    }
+                    p{
+                        font-family: 'Roboto', sans-serif;
+                        font-size: 1rem;
+                        color: var(--small_text_color);
+                        text-align: center;
+                        line-height: 29px
+                    }
+                }
+                .anotherDiv{
+                    @include behave-horizontal;
+                    width: 100%;
+                    
+                    .numbersDiv{
+                        display: flex;
+                        justify-content: center;
+                        margin-left: 24rem;
+                        width: 20%;
+                        .number{
+                            margin-left: 1.5rem;
+                            text-align: center;
+                            width: 2rem;
+                            height: 2rem;
+                            line-height: 2rem;
+                            border-radius: 50%;
+                            background: none;
+                            border: 1px solid var(--fancy_border);
+                            background-color: transparent;
+                        }
+                        .isCurrent{
+                            background-color: var(--main_text_color);
+                            color: var(--trending_background);
+                        }
+                        .special-hover{
+                            &:hover{
+                                border-bottom: 3px solid $mainGreen;
+                            }
+                        }     
+                    }
+                    .counter{
+                        transform: translate(145px);
+                        color: var(--main_text_color);
+                        letter-spacing: 0;
+                        text-align: center;
+                        font-family: $monse;
+                        font-weight: 700;
+                    }
+                    .filmIcon{
+                        transform: translate(280px);
+                    }
+                }
+                #start-btn{
+                    cursor: pointer;
+                    outline: none;
+                    border: 1px solid var(--fancy_border);
+                    border-radius: 25px;
+                    background: none;
+                    text-transform: uppercase;
+                    font-family: 'Montserrat', sans-serif;
+                    color: var(--main_text_color);
+                    font-size: 13px;
+                    font-weight: bold;
+                    height: 3rem;
+                    width: 7.9rem;
+                    margin-bottom: 2rem;
+                    margin-top: -2rem;
+                    &:hover{
+                        color: var(--icon-hover-color);
+                        background-color: var(--main_text_color);
+                    }
+                }
+                
+            }
+        }
+    }
+    footer{
+        flex-flow: row wrap;
+        padding-bottom: 3rem;
+        justify-content: space-between;
+        p{
+            margin: 0 3rem 0 0;
+        }
+        h3{
+            margin: 0 0 0 5rem;
+        }
+        .share{
+            margin: 0 0 0 -25rem;
+            justify-content: space-evenly;
+            
+        }
     }
 }
-footer{
-    flex-flow: row wrap;
-    padding-bottom: 3rem;
-    justify-content: space-between;
-    p{
-        margin: 0 3rem 0 0;
-    }
-    h3{
-        margin: 0 0 0 5rem;
-    }
-    .share{
-        margin: 0 0 0 -25rem;
-        justify-content: space-evenly;
-        
-    }
-}
+
