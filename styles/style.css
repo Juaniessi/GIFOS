@@ -36,6 +36,13 @@ body {
     opacity: 0; }
   100% {
     opacity: 1; } }
+@keyframes spin {
+  0% {
+    transform: rotate(0); }
+  50% {
+    transform: rotate(180deg); }
+  100% {
+    transform: rotate(360deg); } }
 * {
   margin: 0;
   padding: 0;
@@ -242,6 +249,24 @@ main {
         main #searchTitleResult #ctnOfGif .gifArticle .gifLoadedCtn .gifLoaded {
           width: 100%;
           height: 10rem; }
+    main #searchTitleResult .loadMoreBtn {
+      display: flex;
+      justify-content: center; }
+      main #searchTitleResult .loadMoreBtn button {
+        cursor: pointer;
+        outline: none;
+        border: 1px solid var(--primary-color);
+        border-radius: 25px;
+        background: none;
+        text-transform: uppercase;
+        font-family: 'Montserrat', sans-serif;
+        color: var(--primary-color);
+        font-size: 13px;
+        font-weight: bold;
+        height: 3rem;
+        width: 7.9rem;
+        margin-top: 4rem;
+        margin-bottom: 4rem; }
   main .trending {
     display: flex;
     flex-flow: column wrap;

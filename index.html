@@ -13,11 +13,7 @@
 </head>
 <body>
     <header>
-        <picture>
-            <source srcset="img/logo-mobile.svg" media="(max-width: 1023px">
-            <source srcset="img/logo-desktop.svg" media="(min-width: 1024px)">
-            <img srcset="img/logo-mobile.svg" alt="Logo">
-        </picture>
+            <img src="img/logo-mobile.svg" alt="Logo" id="loguito">
         <!--Uso la etiqueta source que permite alternar imagenes segun el view port-->
             <input type="checkbox" id="checkbox"/>
             <label for="checkbox">
@@ -35,7 +31,7 @@
         </nav>
     </header>
     <main>
-        <section class="intro">
+        <section class="intro" id="intro">
             <h1>Inspírate, busca, guarda, y crea los mejores <span>GIFOS</span></h1>
             <img src="img/ilustra_header.svg" alt="Personas felices buscando GIFs">
             <div id="searchbarctn" class="searchbar">
@@ -52,11 +48,11 @@
                 <p id="trendingWords"></p>
             </article>
         </section>
-        <section id="searchTitleResult">
+        <section id="searchTitleResult" class="hidden">
             <h2 id="searchTitle"></h2>
             <div id="ctnOfGif">
                 <template id="gifCardTemplate"> <!-- template de la tarjetita de gif -->
-                    <article class="gifArticle"> <!-- METERLE CLASE A TODO -->
+                    <article class="gifArticle">
                         <div class="gifInfo">
                             <h4 class="gifTitle"></h4>
                             <span class="gifUser"></span>
@@ -73,8 +69,11 @@
                     </article>
                 </template>
             </div>
+            <div id="loadMoreBtn" class="loadMoreBtn">
+                <button id="moreBtn">Ver más</button>
+            </div>
         </section>
-        <section class="trending">
+        <section class="trending" id="trending">
             <h2>Trending GIFOS</h2>
             <p>Mira los últimos <br>GIFOS de nuestra comunidad.</p>
             <div class="carrouselWraper">
@@ -89,10 +88,10 @@
                 </button>
             </div>
         </section>
-        <section class="recordGif">
+        <section class="recordGif hidden" id="recordGif">
             <article class="articleRecord">
                 <div class="imgCamera">
-                    <img src="img/camara.svg" alt="camara" class="camara">
+                    <img src="img/camara.svg" alt="camara" class="camara" id="camara">
                     <img src="img/element-luz-camara.svg" alt="luz de la camara" class="luzCamara">
                 </div>
                 <div class="videoSquare">
@@ -100,6 +99,11 @@
                     <span class="corner-right corner-top"></span>
                     <span class="corner-left corner-bottom"></span>
                     <span class="corner-right corner-bottom"></span>
+
+                    <div id="create-overlay" class="hidden">
+                        <img src="img/loader.svg" alt="loader" class="girar">
+                        <p>Estamos subiendo tu GIFO</p>
+                    </div>
                     <video src="" id="gif-capture" class="hidden" controls autoplay></video>
                     <h4 id="create-title">Aquí podrás <br>crear tus propios GIFOS</h4>
                     <p id="create-subtitle">¡Crea tu GIFO en sólo 3 pasos! <br>(sólo necesitas una cámara para grabar un video)</p>
@@ -113,11 +117,16 @@
                     <div id="counter" class="hidden"> 
                         <span></span>
                     </div>
-                    <img src="img/pelicula.svg" alt="rollo de pelicula" class="filmIcon">
+                    <img src="img/pelicula.svg" alt="rollo de pelicula" class="filmIcon" id="filmIcon">
                 </div>
                 <button id="start-btn" class="startButton">Comenzar</button>
                 
             </article>
+        </section>
+        <section class="favs" id="favs">
+            <div>
+
+            </div>
         </section>
     </main>
     <footer>

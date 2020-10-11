@@ -1,5 +1,14 @@
 const apiKey = "VZ4N6ebz6BSdgrhUNiKAAU0dNYws5GSn";
 
+//variables de todas las secciones
+
+let intro = document.getElementById("intro");
+let id = document.getElementById("searchTitleResult");
+let trending = document.getElementById("trending");
+let recordGif = document.getElementById("recordGif");
+let favs = document.getElementById("favs");
+let searchResul = document.getElementById("searchTitleResult");
+
 //Barra de busqueda
 
 let searchBar = document.getElementById("search-bar");
@@ -34,6 +43,7 @@ async function autoCompletar(){
                 palabraSugerida.textContent=sugestion;
                 palabraSugerida.addEventListener("mousedown", ()=> { //agregamos evento click a la barra
                     searchBar.value=sugestion; //llenamos la barra de busqueda
+                    cantClicks=0; //reiniico la cantidad de clicks para el boton "ver mas"
                     doSearch(searchBar.value);
                 });
             });
@@ -48,16 +58,23 @@ async function autoCompletar(){
 
 let gifCardTemplate = document.getElementById("gifCardTemplate").content.firstElementChild; //me traigo el articulo completo dentro del template
 let ctnOfGif = document.getElementById("ctnOfGif");
+let cantClicks = 0;
+
 
 async function doSearch(search){ //función que hace la búsqueda
     try {
-        const resp = await fetch(`https://api.giphy.com/v1/gifs/search?q=${search}&api_key=${apiKey}&limit=${12}`); //ver el limit, esta en 12
+        let offset = 12*cantClicks;
+        const resp = await fetch(`https://api.giphy.com/v1/gifs/search?q=${search}&api_key=${apiKey}&limit=${12}&offset=${offset}`); //ver el limit, esta en 12
         const respParsed = await resp.json();
-
+        
+        if (cantClicks===0){
         ctnOfGif.textContent = "";
-
+        };
         let ctnTitle = document.getElementById("searchTitle");
         ctnTitle.textContent = searchBar.value;
+
+        
+        searchResul.classList.remove("hidden"); //muestro la sección
 
         respParsed.data.forEach( gif=>{    //recorre el array completo y llena las tarjetas "n" veces con fillinfGifCard
             fillingGifCard(gif, ctnOfGif)}
@@ -87,6 +104,9 @@ function fillingGifCard(gif, contenedor){
 
     //FALTA HACER EVENT LISTENERS
     let gifFav = gifCardTemplateClone.children[2].children[0];
+    gifFav.id = gif.id; //le meto como id el id del gif
+    gifFav.addEventListener("click", addToFavourites);
+
     let gifDownload = gifCardTemplateClone.children[2].children[1];
     let gifExpand = gifCardTemplateClone.children[2].children[2];
 
@@ -143,6 +163,7 @@ async function getTrendingTopics() {
             textTrending.appendChild(spanCreado);
             spanCreado.addEventListener("click", ()=>{
             searchBar.value = trendingWord;
+            cantClicks=0; //reseteo el contador para el ver mas
             doSearch(trendingWord);
                 } 
             )
@@ -167,9 +188,47 @@ imgClose.addEventListener('mousedown', function() { //usar mouse down porque hay
 
 searchBar.addEventListener("keyup", (e)=>{
 if(e.keyCode===13 || e.keyCode===9){ //9 es para el enter de los teclados swiftkey de android
+    cantClicks=0; //reseteo el contador de clicks para el ver mas
     doSearch(searchBar.value);
     }
 });
 
-//ver más
+//botton grabar
 
+let createBtn = document.querySelector(".btnCrear");
+createBtn.addEventListener("click", ()=>{
+    intro.classList.add("hidden");
+    id.classList.add("hidden");
+    trending.classList.add("hidden");
+    recordGif.classList.remove("hidden");
+    favs.classList.add("hidden");
+    searchResul.classList.add("hidden");
+});
+
+//volver al inicio
+let logo = document.getElementById("loguito");
+logo.addEventListener("click", ()=>{
+    intro.classList.remove("hidden");
+    id.classList.remove("hidden");
+    trending.classList.remove("hidden");
+    recordGif.classList.add("hidden");
+    favs.classList.add("hidden");
+    searchResul.classList.add("hidden");
+} );
+
+//evento al boton "ver mas"
+
+let moreBtn = document.getElementById("moreBtn");
+moreBtn.addEventListener("click", ()=>{
+    cantClicks=cantClicks+1;
+    doSearch(traerImput.value); //traerImput.value agarra el valor dentro de la barra de busqueda
+});
+
+//evento favoritos
+
+function addToFavourites(){
+    if (localStorage.getItem("favourites")==null){
+        localStorage.setItem("favourites", `[${this.id}]`);
+    }
+    console.log(localStorage);
+}

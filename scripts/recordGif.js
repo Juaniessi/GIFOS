@@ -135,6 +135,8 @@ function fourthStage() {
 
 async function fifthStage() {
 
+	awaitUploadAnimation();
+	
 	let form = new FormData();
 	form.append('file', gif, 'newGif.gif');
 
@@ -144,6 +146,9 @@ async function fifthStage() {
 		json: true
 });
 	let data = await resp.json();
+
+	cambiarACheckd ();
+
 	console.log(data.data);
 
 	myGifosArray.push(data.data.id);
@@ -159,5 +164,23 @@ async function fifthStage() {
 
 function onStop() {
 	//Generar el archivo para subir
-	console.log('Supercalifragilisticuespialidoso')
+	console.log('Supercalifragilisticuespialidoso');
 }
+
+function cambiarACheckd (){
+	let imagenDeCarga = document.querySelector(".girar");
+	imagenDeCarga.setAttribute("src", "img/check.svg");
+	imagenDeCarga.style.animation="none";
+}; 
+
+async function awaitUploadAnimation(){
+	createOverlay = document.querySelector("#create-overlay");
+	createOverlay.classList.remove("hidden");
+	createOverlay.classList.add("create-overlay");
+
+	
+//creamos el titulo
+//creamos la imagen
+}
+
+

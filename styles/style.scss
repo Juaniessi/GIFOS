@@ -195,7 +195,6 @@ main{
         }
     }
     #searchTitleResult{
-        
         margin: 2rem;
         h2{
             font-family: $monse;
@@ -254,6 +253,26 @@ main{
                         height: 10rem;
                     }
                 }
+            }
+        }
+        .loadMoreBtn{
+            display: flex;
+            justify-content: center;
+            button{
+                cursor: pointer;
+                outline: none;
+                border: 1px solid var(--primary-color);
+                border-radius: 25px;
+                background: none;
+                text-transform: uppercase;
+                font-family: 'Montserrat', sans-serif;
+                color: var(--primary-color);
+                font-size: 13px;
+                font-weight: bold;
+                height: 3rem;
+                width: 7.9rem;
+                margin-top: 4rem;
+                margin-bottom: 4rem;
             }
         }  
     }

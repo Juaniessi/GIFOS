@@ -187,31 +187,42 @@ html[data-theme='dark'] {
         width: 100%; }
   main .recordGif {
     width: 100%;
-    padding-right: 10rem; }
+    height: 83vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-evenly; }
     main .recordGif .articleRecord {
       display: flex;
-      flex-flow: row wrap;
-      justify-content: center; }
+      flex-flow: column nowrap;
+      justify-content: space-around;
+      height: 70%; }
       main .recordGif .articleRecord .imgCamera {
         display: flex;
         align-content: center;
+        position: absolute;
+        left: 10%;
+        top: 33%;
         /* .camara{
            
         } */ }
         main .recordGif .articleRecord .imgCamera .luzCamara {
           animation: blinking .2s infinite; }
       main .recordGif .articleRecord .videoSquare {
-        width: 43rem;
+        width: 48vw;
+        height: 35vh;
         border: 1px solid var(--fancy_border);
         overflow: hidden;
         position: relative;
         display: flex;
-        flex-flow: row wrap;
+        flex-direction: column;
         justify-content: center;
         align-items: center; }
         main .recordGif .articleRecord .videoSquare #gif-capture {
           width: 75%;
-          height: 75%; }
+          height: 75%;
+          position: absolute; }
         main .recordGif .articleRecord .videoSquare .corner-right, main .recordGif .articleRecord .videoSquare .corner-left {
           height: 25px;
           width: 27px;
@@ -247,14 +258,13 @@ html[data-theme='dark'] {
         flex-flow: row wrap;
         justify-content: center;
         align-items: center;
-        width: 100%; }
+        width: 100%;
+        position: relative; }
         main .recordGif .articleRecord .anotherDiv .numbersDiv {
           display: flex;
-          justify-content: center;
-          margin-left: 24rem;
-          width: 20%; }
+          justify-content: center; }
           main .recordGif .articleRecord .anotherDiv .numbersDiv .number {
-            margin-left: 1.5rem;
+            margin: .75rem;
             text-align: center;
             width: 2rem;
             height: 2rem;
@@ -262,21 +272,24 @@ html[data-theme='dark'] {
             border-radius: 50%;
             background: none;
             border: 1px solid var(--fancy_border);
-            background-color: transparent; }
+            background-color: transparent;
+            color: var(--small_text_color); }
           main .recordGif .articleRecord .anotherDiv .numbersDiv .isCurrent {
             background-color: var(--main_text_color);
             color: var(--trending_background); }
-          main .recordGif .articleRecord .anotherDiv .numbersDiv .special-hover:hover {
-            border-bottom: 3px solid #50E3C2; }
         main .recordGif .articleRecord .anotherDiv .counter {
-          transform: translate(145px);
+          position: absolute;
+          right: 0;
           color: var(--main_text_color);
           letter-spacing: 0;
           text-align: center;
           font-family: "Montserrat", "sans-serif";
           font-weight: 700; }
+        main .recordGif .articleRecord .anotherDiv .special-hover:hover {
+          border-bottom: 3px solid #50E3C2; }
         main .recordGif .articleRecord .anotherDiv .filmIcon {
-          transform: translate(280px); }
+          position: absolute;
+          right: -30%; }
       main .recordGif .articleRecord #start-btn {
         cursor: pointer;
         outline: none;
@@ -290,11 +303,25 @@ html[data-theme='dark'] {
         font-weight: bold;
         height: 3rem;
         width: 7.9rem;
-        margin-bottom: 2rem;
-        margin-top: -2rem; }
+        align-self: center; }
         main .recordGif .articleRecord #start-btn:hover {
           color: var(--icon-hover-color);
           background-color: var(--main_text_color); }
+  main .create-overlay {
+    background-color: rgba(87, 46, 229, 0.7);
+    width: 75%;
+    height: 75%;
+    top: 50%;
+    left: 50%;
+    z-index: 500;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; }
+  main .girar {
+    animation: spin 1s infinite linear; }
+  main .hidden {
+    display: none; }
 
   footer {
     flex-flow: row wrap;
