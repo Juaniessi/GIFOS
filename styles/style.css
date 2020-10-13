@@ -54,7 +54,14 @@ a {
   color: initial;
   text-decoration: none; }
 
-header {
+body::-webkit-scrollbar {
+  width: 10px; }
+body::-webkit-scrollbar-track {
+  border-radius: 10px; }
+body::-webkit-scrollbar-thumb {
+  background: var(--main_text_color);
+  border-radius: 10px; }
+body header {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
@@ -66,9 +73,9 @@ header {
   z-index: 10;
   top: 0;
   padding-bottom: 1rem; }
-  header img {
+  body header img {
     margin: 1rem 0 0 1.8rem; }
-  header input[type="checkbox"] {
+  body header input[type="checkbox"] {
     display: none;
     margin: 0 1rem 0 0;
     /* &:checked~label{ //esto lo dejo de usar, porque ahora uso una sola imagen
@@ -79,7 +86,7 @@ header {
             display: none;
         }
     } */ }
-    header input[type="checkbox"]:checked ~ nav {
+    body header input[type="checkbox"]:checked ~ nav {
       display: flex;
       flex-flow: column wrap;
       width: 100%;
@@ -87,14 +94,14 @@ header {
       top: 5.375rem;
       position: fixed;
       height: 100vh; }
-      header input[type="checkbox"]:checked ~ nav ul {
+      body header input[type="checkbox"]:checked ~ nav ul {
         padding-top: 1rem; }
-        header input[type="checkbox"]:checked ~ nav ul li {
+        body header input[type="checkbox"]:checked ~ nav ul li {
           padding: .5rem;
           text-align: center;
           font-weight: bold;
           font-size: 15px; }
-          header input[type="checkbox"]:checked ~ nav ul li::after {
+          body header input[type="checkbox"]:checked ~ nav ul li::after {
             content: "";
             display: block;
             margin: 0 auto;
@@ -102,51 +109,50 @@ header {
             border-bottom: solid 1px white;
             margin-top: 1rem;
             opacity: 50%; }
-          header input[type="checkbox"]:checked ~ nav ul li:last-child {
+          body header input[type="checkbox"]:checked ~ nav ul li:last-child {
             display: none; }
-          header input[type="checkbox"]:checked ~ nav ul li button {
+          body header input[type="checkbox"]:checked ~ nav ul li button {
             display: none; }
-          header input[type="checkbox"]:checked ~ nav ul li a {
+          body header input[type="checkbox"]:checked ~ nav ul li a {
             color: white; }
-  header label {
+  body header label {
     display: flex;
     margin-right: 1.8rem; }
-    header label .closebtn {
+    body header label .closebtn {
       display: none; }
-  header nav {
+  body header nav {
     display: none; }
-    header nav ul {
+    body header nav ul {
       list-style: none; }
-
-main {
+body main {
   display: flex;
   flex-flow: column wrap;
   width: 100%;
   margin-top: 6rem; }
-  main .intro {
+  body main .intro {
     display: flex;
     flex-flow: column wrap;
     align-content: center;
     text-align: center;
     width: 100%; }
-    main .intro h1 {
+    body main .intro h1 {
       font-size: 1.5rem;
       color: var(--main_text_color);
       line-height: 33px;
       width: 73%;
       align-self: center; }
-      main .intro h1 span {
+      body main .intro h1 span {
         color: #50E3C2; }
-    main .intro img {
+    body main .intro img {
       width: 73%;
       align-self: center; }
-    main .intro .searchbar {
+    body main .intro .searchbar {
       border: 1px solid var(--fancy_border);
       border-radius: 30px;
       padding: 1rem 2rem 1rem 2rem;
       width: 90%;
       align-self: center; }
-      main .intro .searchbar .search {
+      body main .intro .searchbar .search {
         border: none;
         font-family: "Roboto", "sans-serif";
         font-size: 1rem;
@@ -157,39 +163,39 @@ main {
         /* &:focus{  
             outline: none;
         } */ }
-      main .intro .searchbar #contenedorBusquedas {
+      body main .intro .searchbar #contenedorBusquedas {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: space-between;
         align-content: stretch;
         align-items: center; }
-        main .intro .searchbar #contenedorBusquedas #lupaDeBusqueda {
+        body main .intro .searchbar #contenedorBusquedas #lupaDeBusqueda {
           color: var(--main_text_color);
           font-size: 1.5rem; }
-        main .intro .searchbar #contenedorBusquedas #cerrarBusqueda {
+        body main .intro .searchbar #contenedorBusquedas #cerrarBusqueda {
           color: var(--main_text_color);
           font-size: 1.5rem;
           display: none; }
-      main .intro .searchbar #sugestionCtn {
+      body main .intro .searchbar #sugestionCtn {
         display: flex;
         flex-flow: column wrap; }
-        main .intro .searchbar #sugestionCtn #divDeSugerencias {
+        body main .intro .searchbar #sugestionCtn #divDeSugerencias {
           display: flex;
           flex-flow: row wrap; }
-          main .intro .searchbar #sugestionCtn #divDeSugerencias:first-child {
+          body main .intro .searchbar #sugestionCtn #divDeSugerencias:first-child {
             border-top: 1px solid #9cafc3c2;
             margin-top: 1rem;
             padding-top: .5rem; }
-        main .intro .searchbar #sugestionCtn p {
+        body main .intro .searchbar #sugestionCtn p {
           text-align: left;
           margin: .5rem 0; }
-  main .trends h3 {
+  body main .trends h3 {
     font-size: 1rem;
     color: var(--main_text_color);
     line-height: 25px;
     margin-top: 2rem; }
-  main .trends p {
+  body main .trends p {
     margin: 0 auto;
     font-weight: 500;
     font-size: 0.9rem;
@@ -200,59 +206,30 @@ main {
     text-align: center;
     justify-content: center;
     text-transform: capitalize; }
-  main #searchTitleResult {
+  body main #searchTitleResult {
     margin: 2rem; }
-    main #searchTitleResult h2 {
+    body main #searchTitleResult h2 {
       font-family: "Montserrat", "sans-serif";
       font-size: 25px;
       color: var(--main_text_color);
       text-align: center;
       line-height: 40px; }
-      main #searchTitleResult h2:first-letter {
+      body main #searchTitleResult h2:first-letter {
         text-transform: uppercase; }
-    main #searchTitleResult #ctnOfGif {
+    body main #searchTitleResult #ctnOfGif {
       display: flex;
       flex-flow: row wrap;
+      justify-content: space-between;
       width: 100%; }
-      main #searchTitleResult #ctnOfGif .gifArticle {
-        background-color: lightgrey;
-        position: relative;
-        width: 50%; }
-        main #searchTitleResult #ctnOfGif .gifArticle .gifInfo {
-          display: none;
-          bottom: 2rem;
-          left: 1rem;
-          z-index: 1000; }
-          main #searchTitleResult #ctnOfGif .gifArticle .gifInfo h4 {
-            font-family: 'Roboto', sans-serif;
-            font-weight: bold;
-            font-size: .8rem;
-            color: var(--text-color);
-            text-align: left; }
-          main #searchTitleResult #ctnOfGif .gifArticle .gifInfo span {
-            font-family: 'Roboto', sans-serif;
-            font-size: .6rem;
-            color: var(--text-color);
-            text-align: left; }
-        main #searchTitleResult #ctnOfGif .gifArticle .gifBtns {
-          display: none;
-          right: 3rem;
-          top: 1rem; }
-        main #searchTitleResult #ctnOfGif .gifArticle .filter {
-          background-color: #572EE5;
-          opacity: 0.7;
-          display: none;
-          width: 100%;
-          height: 100%;
-          top: 0;
-          left: 0; }
-        main #searchTitleResult #ctnOfGif .gifArticle .gifLoadedCtn .gifLoaded {
+      body main #searchTitleResult #ctnOfGif .gifArticle .gifLoadedCtn {
+        width: 100%; }
+        body main #searchTitleResult #ctnOfGif .gifArticle .gifLoadedCtn .gifLoaded {
           width: 100%;
           height: 10rem; }
-    main #searchTitleResult .loadMoreBtn {
+    body main #searchTitleResult .loadMoreBtn {
       display: flex;
       justify-content: center; }
-      main #searchTitleResult .loadMoreBtn button {
+      body main #searchTitleResult .loadMoreBtn button {
         cursor: pointer;
         outline: none;
         border: 1px solid var(--primary-color);
@@ -267,21 +244,21 @@ main {
         width: 7.9rem;
         margin-top: 4rem;
         margin-bottom: 4rem; }
-  main .trending {
+  body main .trending {
     display: flex;
-    flex-flow: column wrap;
+    flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
     background-color: var(--trending_background);
     padding-bottom: 5rem;
     padding-top: 2.8rem; }
-    main .trending h2 {
+    body main .trending h2 {
       font-weight: 700;
       font-size: 1.25rem;
       color: var(--main_text_color);
       text-align: center;
       line-height: 30px; }
-    main .trending p {
+    body main .trending p {
       font-family: "Roboto", "sans-serif";
       font-size: 1rem;
       color: var(--small_text_color);
@@ -289,45 +266,125 @@ main {
       line-height: 23px;
       width: 85%;
       margin: 0.5rem 0 2rem 0; }
-    main .trending .carrouselWraper {
+    body main .trending .carouselWraper {
       margin-top: 2rem; }
-      main .trending .carrouselWraper .buttonSlider {
+      body main .trending .carouselWraper .buttonSlider {
         display: none; }
-      main .trending .carrouselWraper .carousel {
+      body main .trending .carouselWraper .carousel-ctn {
         display: flex;
-        flex-flow: column wrap;
-        justify-content: center; }
-        main .trending .carrouselWraper .carousel img {
-          width: 70%;
-          height: 15rem;
+        flex-flow: row wrap;
+        justify-content: center;
+        align-items: center;
+        justify-content: start;
+        overflow: scroll;
+        width: 100vw; }
+        body main .trending .carouselWraper .carousel-ctn .carousel {
+          position: relative;
+          align-items: center;
+          justify-content: space-between;
           display: flex;
-          align-self: center; }
-  main .hidden {
+          margin: 2rem auto; }
+          body main .trending .carouselWraper .carousel-ctn .carousel .gifArticle {
+            margin-right: 30px; }
+            body main .trending .carouselWraper .carousel-ctn .carousel .gifArticle .gifLoadedCtn .gifLoaded {
+              position: relative;
+              display: flex;
+              position: relative;
+              width: 357px;
+              height: 275px;
+              background-size: contain; }
+  body main .hidden {
     display: none; }
-
-footer {
+  body main .gifArticle {
+    position: relative;
+    width: 50%; }
+    body main .gifArticle .gifInfo {
+      display: none;
+      bottom: 2rem;
+      left: 1rem;
+      z-index: 1000; }
+      body main .gifArticle .gifInfo .gifTitle {
+        font-family: 'Roboto', sans-serif;
+        font-weight: bold;
+        font-size: .8rem;
+        color: var(--text-color);
+        text-align: left; }
+      body main .gifArticle .gifInfo .gifUser {
+        font-family: 'Roboto', sans-serif;
+        font-size: .6rem;
+        color: var(--text-color);
+        text-align: left; }
+    body main .gifArticle .gifBtns {
+      display: none;
+      right: 3rem;
+      top: 1rem; }
+    body main .gifArticle .filter {
+      background-color: #572EE5;
+      opacity: 0.7;
+      display: none;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0; }
+  body main .misGifos {
+    margin: 2rem;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center; }
+    body main .misGifos h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.25rem;
+      color: var(--main_text_color);
+      text-align: center;
+      line-height: 30px;
+      margin-bottom: 2.5rem; }
+    body main .misGifos #ctnOfMyGifos {
+      display: flex;
+      flex-flow: row wrap;
+      width: 100%; }
+      body main .misGifos #ctnOfMyGifos .gifArticle .gifLoadedCtn {
+        width: 100%; }
+        body main .misGifos #ctnOfMyGifos .gifArticle .gifLoadedCtn .gifLoaded {
+          width: 100%;
+          height: 10rem; }
+  body main .emptySection {
+    display: flex;
+    flex-flow: column wrap;
+    margin: 2rem 2rem 4rem; }
+    body main .emptySection img {
+      margin: 2rem; }
+    body main .emptySection span {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: bold;
+      font-size: 1.4rem;
+      color: var(--mainGreen);
+      line-height: 25px;
+      text-align: center; }
+body footer {
   padding: 3rem 0rem 1rem 0rem;
   display: flex;
   flex-flow: column wrap;
   align-items: center;
+  justify-content: center;
   border-bottom: 0.3rem solid var(--body_border); }
-  footer h3 {
+  body footer h3 {
     font-family: "Roboto", "sans-serif";
     font-weight: 200;
     font-size: 15px;
     color: var(--small_text_color);
     letter-spacing: 0; }
-  footer .share {
+  body footer .share {
     display: flex;
     flex-flow: row wrap;
-    justify-content: space-between;
-    width: 20%;
+    justify-content: space-evenly;
+    width: 100%;
     margin: 1.5rem 0 3rem 0; }
-    footer .share i {
+    body footer .share i {
       color: #CDD6E0; }
-      footer .share i:hover {
+      body footer .share i:hover {
         color: var(--main_text_color); }
-  footer p {
+  body footer p {
     font-family: "Roboto", "sans-serif";
     font-size: 14px;
     color: var(--small_text_color);

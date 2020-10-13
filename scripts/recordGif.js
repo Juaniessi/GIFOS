@@ -101,6 +101,7 @@ function thirdStage(){
 			}
 		});
 		recorder.startRecording();
+		setTimer(); //ver que onda con este timer
 	});
 	
 	counter.classList.add("counter");
@@ -167,20 +168,103 @@ function onStop() {
 	console.log('Supercalifragilisticuespialidoso');
 }
 
+
+//cambiar imagen a checked
 function cambiarACheckd (){
 	let imagenDeCarga = document.querySelector(".girar");
 	imagenDeCarga.setAttribute("src", "img/check.svg");
 	imagenDeCarga.style.animation="none";
 }; 
 
+
+//función que coloca icono de upload
 async function awaitUploadAnimation(){
 	createOverlay = document.querySelector("#create-overlay");
 	createOverlay.classList.remove("hidden");
 	createOverlay.classList.add("create-overlay");
 
-	
+
 //creamos el titulo
 //creamos la imagen
 }
 
+// Timer para el grabador
 
+let s = 0;
+let stoppedFlag = false;
+
+let timerSet = setInterval(setTimer, 1000);
+
+    function setTimer() {
+      if (stoppedFlag == true) {
+        clearInterval(timerSet)
+        s = 0;
+      }
+      else {
+        let timeValue = new Date(s * 1000).toISOString().substr(11, 8)
+
+        reDoButton.textContent = timeValue;
+        s++;
+      }
+    };
+
+
+//sección mis GIFOS
+
+let gifosString = myGifosArray.toString();
+let ctnOfMyGifos = document.getElementById("ctnOfMyGifos");
+
+//(`https://api.giphy.com/v1/gifs/${gifosString}?&api_key=${apiKey}`)
+
+async function doSearchMyGifs(gifosString){ //función que hace la búsqueda
+    try {
+        if (myGifosArray.length == 1){
+			const resp = await fetch(`https://api.giphy.com/v1/gifs/${gifosString}?&api_key=${apiKey}`);
+			const respParsed = await resp.json();
+			respParsed.data.forEach( gif=>{    
+				fillingGifCardMygifos(gif, ctnOfMyGifos)}
+				) 
+		}else if(myGifosArray.length > 1){
+			const resp = await fetch(`https://api.giphy.com/v1/gifs?ids=${gifosString}?&api_key=${apiKey}`);
+			const respParsed = await resp.json();+
+			respParsed.data.forEach( gif=>{    
+				fillingGifCardMyGifos(gif, ctnOfMyGifos)}
+				) 
+		}
+        
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+doSearchMyGifs(gifosString);
+
+function fillingGifCardMyGifos(gif, contenedor){ 
+    
+    let gifCardTemplateClone= gifCardTemplate.cloneNode(true);
+
+    let trueGif = gifCardTemplateClone.children[1].children[0];
+    trueGif.src=gif.images.fixed_height.url; //gif es el data[x]
+
+    let gifAlt = gifCardTemplateClone.children[1].children[0];
+    gifAlt.alt=gif.title;
+
+    let gifTitle = gifCardTemplateClone.children[0].children[0];
+    gifTitle.textContent=gif.title;
+
+    let gifUserName = gifCardTemplateClone.children[0].children[1];
+    gifUserName.textContent=gif.username;
+
+    //FALTA HACER EVENT LISTENERS
+	let gifErase = gifCardTemplateClone.children[2].children[0].children[0];
+	gifErase.classList.remove("fa-heart");
+	gifErase.classList.add("fa-trash-alt");
+    gifErase.id = gif.id; //le meto como id el id del gif
+    gifErase.addEventListener("click", addToFavourites);
+
+    let gifDownload = gifCardTemplateClone.children[2].children[1];
+    let gifExpand = gifCardTemplateClone.children[2].children[2];
+    //FALTA BANDA, SEGUIR... Seguir más
+    
+    contenedor.appendChild(gifCardTemplateClone);
+};

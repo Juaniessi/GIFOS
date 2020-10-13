@@ -1,6 +1,6 @@
 @mixin behave-vertical {
     display:flex;
-    flex-direction: column;
+    flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
   }
@@ -18,3 +18,4 @@
     font-weight: $font-weight;
     line-height: $line-height;
   }
+

@@ -109,7 +109,6 @@ function fillingGifCard(gif, contenedor){
 
     let gifDownload = gifCardTemplateClone.children[2].children[1];
     let gifExpand = gifCardTemplateClone.children[2].children[2];
-
     //FALTA BANDA, SEGUIR... Seguir más
     
     contenedor.appendChild(gifCardTemplateClone);

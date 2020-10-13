@@ -73,17 +73,31 @@
                 <button id="moreBtn">Ver más</button>
             </div>
         </section>
+        <section class="favs" id="favs">
+            <div></div>
+        </section>
+        <section class="misGifos">
+            <img src="img/icon-mis-gifos.svg" alt="Mis GIFOS">
+            <h2>Mis GIFOS</h2>
+            <div id="emptyMygifos" class="emptySection">
+                <img src="img/icon-mis-gifos-sin-contenido.svg" alt="Mis GIFOS sin contenido">
+                <span>¡Anímate a crear tuprimer GIFO!</span>
+            </div>
+            <div id="ctnOfMyGifos"></div>
+        </section>
         <section class="trending" id="trending">
             <h2>Trending GIFOS</h2>
             <p>Mira los últimos <br>GIFOS de nuestra comunidad.</p>
-            <div class="carrouselWraper">
-                <button class="buttonSlider">
+            <div class="carouselWraper" id="carouselWraper">
+                <button class="buttonSlider" id="leftBtn">
                     <i class="fas fa-chevron-left"></i>
                 </button>
-                    <div class="carousel">
-                        <img src="../cat.gif" alt="cat-gif">
+                    <div class="carousel-ctn">
+                        <div class="carousel">
+                            <!-- aca me traigo el template de las busquedas -->
+                        </div>
                     </div>
-                <button class="buttonSlider">
+                <button class="buttonSlider" id="rightBtn">
                     <i class="fas fa-chevron-right"></i>
                 </button>
             </div>
@@ -123,23 +137,21 @@
                 
             </article>
         </section>
-        <section class="favs" id="favs">
-            <div>
-
-            </div>
-        </section>
     </main>
     <footer>
-        <h3>Compartir en:</h3>
-        <div class="share">
-            <a href=""><i class="fab fa-facebook-f"></i></a>
-            <a href=""><i class="fab fa-twitter"></i></a>
-            <a href=""><i class="fab fa-instagram"></i></a>
+        <div>
+            <h3>Compartir en:</h3>
+            <div class="share">
+                <a href=""><i class="fab fa-facebook-f"></i></a>
+                <a href=""><i class="fab fa-twitter"></i></a>
+                <a href=""><i class="fab fa-instagram"></i></a>
+            </div>
         </div>
         <p>&copy; GIFOS 2020 All Rights Reserved.</p>
     </footer>
     <script src="scripts/js.js"></script>
     <script src="scripts/light-dark-mode.js"></script>
-    <script src="scripts/recordGif.js"></script>  
+    <script src="scripts/recordGif.js"></script>
+    <script src="scripts/carousel.js"></script>  
 </body>
 </html>
