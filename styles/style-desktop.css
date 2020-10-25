@@ -7,7 +7,9 @@ html {
   --body_border: #572EE5;
   --fancy_border: #572EE5;
   --btn_hover: white;
-  --mainGreen: #50E3C2; }
+  --mainGreen: #50E3C2;
+  --bg-max-view: rgba(255,255,255,0.90);
+  --max-view-buttons: rgba(87,46,229,0.70); }
 
 html[data-theme='dark'] {
   --background: #37383C;
@@ -17,7 +19,9 @@ html[data-theme='dark'] {
   --drawer_background: #000;
   --body_border: #000;
   --fancy_border: #FFF;
-  --btn_hover: black; }
+  --btn_hover: black;
+  --bg-max-view: rgba(55,56,60,0.90);
+  --max-view-buttons: rgba(255,255,255,0.70); }
 
 @media screen and (min-width: 1024px) {
   body header {
@@ -112,50 +116,55 @@ html[data-theme='dark'] {
     justify-content: center; }
     body main .trends p br {
       display: none; }
-  body main #searchTitleResult #ctnOfGif {
+  body main .searchTitleResult {
     display: flex;
-    flex-flow: row wrap;
-    width: 100%; }
-    body main #searchTitleResult #ctnOfGif .gifArticle {
-      background-color: lightgrey;
-      position: relative;
-      width: 25%; }
-      body main #searchTitleResult #ctnOfGif .gifArticle:hover .filter, body main #searchTitleResult #ctnOfGif .gifArticle:hover .gifBtns, body main #searchTitleResult #ctnOfGif .gifArticle:hover .gifInfo {
-        display: initial;
-        position: absolute; }
-      body main #searchTitleResult #ctnOfGif .gifArticle .gifInfo .gifTitle {
-        color: #FFFFFF;
-        font-size: 1rem; }
-      body main #searchTitleResult #ctnOfGif .gifArticle .gifInfo .gifUser {
-        color: #FFFFFF;
-        font-size: .8rem; }
-      body main #searchTitleResult #ctnOfGif .gifArticle .gifBtns {
-        display: none;
-        right: 1rem;
-        top: 1rem;
-        z-index: 1000; }
-        body main #searchTitleResult #ctnOfGif .gifArticle .gifBtns button {
-          cursor: pointer;
-          border: 1px solid #CED7E1;
-          border-radius: 6px;
-          background: #FFFFFF;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center; }
+    body main .searchTitleResult #ctnOfGif {
+      display: flex;
+      flex-flow: row wrap;
+      width: 90%; }
+      body main .searchTitleResult #ctnOfGif .gifArticle {
+        background-color: lightgrey;
+        position: relative;
+        width: 25%; }
+        body main .searchTitleResult #ctnOfGif .gifArticle:hover .filter, body main .searchTitleResult #ctnOfGif .gifArticle:hover .gifBtns, body main .searchTitleResult #ctnOfGif .gifArticle:hover .gifInfo {
+          display: initial;
+          position: absolute; }
+        body main .searchTitleResult #ctnOfGif .gifArticle .gifInfo .gifTitle {
+          color: #FFFFFF;
+          font-size: 1rem; }
+        body main .searchTitleResult #ctnOfGif .gifArticle .gifInfo .gifUser {
+          color: #FFFFFF;
+          font-size: .8rem; }
+        body main .searchTitleResult #ctnOfGif .gifArticle .gifBtns {
+          display: none;
+          right: 1rem;
+          top: 1rem;
+          z-index: 1000; }
+          body main .searchTitleResult #ctnOfGif .gifArticle .gifBtns button {
+            cursor: pointer;
+            border: 1px solid #CED7E1;
+            border-radius: 6px;
+            background: #FFFFFF;
+            opacity: 0.7;
+            height: 32px;
+            width: 32px; }
+            body main .searchTitleResult #ctnOfGif .gifArticle .gifBtns button .fa-heart, body main .searchTitleResult #ctnOfGif .gifArticle .gifBtns button .fa-download, body main .searchTitleResult #ctnOfGif .gifArticle .gifBtns button .fa-expand-alt, body main .searchTitleResult #ctnOfGif .gifArticle .gifBtns button .fa-trash-alt {
+              color: var(--deselect-icons-color);
+              font-size: 1.3rem; }
+        body main .searchTitleResult #ctnOfGif .gifArticle .filter {
+          background-color: #572EE5;
           opacity: 0.7;
-          height: 32px;
-          width: 32px; }
-          body main #searchTitleResult #ctnOfGif .gifArticle .gifBtns button .fa-heart, body main #searchTitleResult #ctnOfGif .gifArticle .gifBtns button .fa-download, body main #searchTitleResult #ctnOfGif .gifArticle .gifBtns button .fa-expand-alt {
-            color: var(--deselect-icons-color);
-            font-size: 1.3rem; }
-      body main #searchTitleResult #ctnOfGif .gifArticle .filter {
-        background-color: #572EE5;
-        opacity: 0.7;
-        display: none;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0; }
-      body main #searchTitleResult #ctnOfGif .gifArticle .gifLoadedCtn .gifLoaded {
-        width: 100%;
-        height: 20rem; }
+          display: none;
+          width: 100%;
+          height: 100%;
+          top: 0;
+          left: 0; }
+        body main .searchTitleResult #ctnOfGif .gifArticle .gifLoadedCtn .gifLoaded {
+          width: 100%;
+          height: 20rem; }
   body main .trending h2 {
     font-size: 34px; }
   body main .trending p {
@@ -319,7 +328,7 @@ html[data-theme='dark'] {
         width: 7.9rem;
         align-self: center; }
         body main .recordGif .articleRecord #start-btn:hover {
-          color: var(--icon-hover-color);
+          color: var(--btn_hover);
           background-color: var(--main_text_color); }
   body main .create-overlay {
     background-color: rgba(87, 46, 229, 0.7);
@@ -334,8 +343,6 @@ html[data-theme='dark'] {
     align-items: center; }
   body main .girar {
     animation: spin 1s infinite linear; }
-  body main .hidden {
-    display: none; }
   body main .gifArticle {
     position: relative;
     width: 25%; }
@@ -408,7 +415,7 @@ html[data-theme='dark'] {
           opacity: 0.7;
           height: 32px;
           width: 32px; }
-          body main .misGifos #ctnOfMyGifos .gifArticle .gifBtns button .fa-heart, body main .misGifos #ctnOfMyGifos .gifArticle .gifBtns button .fa-download, body main .misGifos #ctnOfMyGifos .gifArticle .gifBtns button .fa-expand-alt {
+          body main .misGifos #ctnOfMyGifos .gifArticle .gifBtns button .fa-heart, body main .misGifos #ctnOfMyGifos .gifArticle .gifBtns button .fa-download, body main .misGifos #ctnOfMyGifos .gifArticle .gifBtns button .fa-expand-alt, body main .misGifos #ctnOfMyGifos .gifArticle .gifBtns button .fa-trash-alt {
             color: var(--deselect-icons-color);
             font-size: 1.3rem; }
       body main .misGifos #ctnOfMyGifos .gifArticle .filter {
@@ -422,6 +429,8 @@ html[data-theme='dark'] {
       body main .misGifos #ctnOfMyGifos .gifArticle .gifLoadedCtn .gifLoaded {
         width: 100%;
         height: 20rem; }
+  body main .hidden {
+    display: none; }
   body footer {
     display: flex;
     flex-flow: row wrap;

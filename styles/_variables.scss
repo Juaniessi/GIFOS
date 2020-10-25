@@ -16,6 +16,8 @@ html {
     --fancy_border: #572EE5;
     --btn_hover: white;
     --mainGreen: #50E3C2;
+    --bg-max-view: rgba(255,255,255,0.90);
+    --max-view-buttons: rgba(87,46,229,0.70);
 }
 
 html[data-theme='dark'] {
@@ -27,4 +29,6 @@ html[data-theme='dark'] {
     --body_border: #000;
     --fancy_border: #FFF;
     --btn_hover: black;
+    --bg-max-view: rgba(55,56,60,0.90);
+    --max-view-buttons: rgba(255,255,255,0.70);
 }

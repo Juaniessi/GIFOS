@@ -120,12 +120,12 @@
                     }
                 }
             }
-            #searchTitleResult{
-            
+            .searchTitleResult{
+                @include behave-vertical;
                 #ctnOfGif{ //seteo estilos al titulo de la busqueda
                     display: flex;
                     flex-flow: row wrap;
-                    width: 100%;
+                    width: 90%;
                     .gifArticle{
                         background-color: lightgrey;
                         position: relative;
@@ -159,7 +159,7 @@
                                 opacity: 0.7;
                                 height: 32px;
                                 width: 32px;
-                                .fa-heart, .fa-download, .fa-expand-alt{
+                                .fa-heart, .fa-download, .fa-expand-alt, .fa-trash-alt{
                                     color: var(--deselect-icons-color);
                                     font-size: 1.3rem;
                                 }
@@ -373,7 +373,7 @@
                         width: 7.9rem;
                         align-self: center;
                         &:hover{
-                            color: var(--icon-hover-color);
+                            color: var(--btn_hover);
                             background-color: var(--main_text_color);
                         }
                     }
@@ -392,9 +392,7 @@
             .girar{
                 animation: spin 1s infinite linear;
             }
-            .hidden{
-                display: none;
-            }
+            
             
             //gif article para el trending
             .gifArticle{
@@ -494,7 +492,7 @@
                                 opacity: 0.7;
                                 height: 32px;
                                 width: 32px;
-                                .fa-heart, .fa-download, .fa-expand-alt{
+                                .fa-heart, .fa-download, .fa-expand-alt, .fa-trash-alt{
                                     color: var(--deselect-icons-color);
                                     font-size: 1.3rem;
                                 }
@@ -517,6 +515,9 @@
                         }
                     }
                 }
+            }
+            .hidden{
+                display: none;
             }
         }
         footer{

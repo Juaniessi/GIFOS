@@ -11,6 +11,12 @@ if (myGifosArray === null){
 	myGifosArray = [];
 }
 
+let favGifosArray = JSON.parse(localStorage.getItem("favGifs"));
+
+if (favGifosArray === null){
+	favGifosArray = [];
+}
+
 let recorder;
 let gif;
 
@@ -101,12 +107,13 @@ function thirdStage(){
 			}
 		});
 		recorder.startRecording();
-		setTimer(); //ver que onda con este timer
+		stoppedFlag = false;
+		timerSet = setInterval(setTimer, 1000); //arranca a correr el timer
 	});
 	
 	counter.classList.add("counter");
 	counter.classList.remove("hidden");
-	reDoButton.textContent	 = "00:00:00"
+
 	startBtn.textContent = "FINALIZAR";
 	stageCont++;
 }
@@ -150,8 +157,6 @@ async function fifthStage() {
 
 	cambiarACheckd ();
 
-	console.log(data.data);
-
 	myGifosArray.push(data.data.id);
 
 	localStorage.setItem('myGifos', JSON.stringify(myGifosArray));
@@ -165,7 +170,8 @@ async function fifthStage() {
 
 function onStop() {
 	//Generar el archivo para subir
-	console.log('Supercalifragilisticuespialidoso');
+	stoppedFlag = true;
+
 }
 
 
@@ -192,79 +198,66 @@ async function awaitUploadAnimation(){
 
 let s = 0;
 let stoppedFlag = false;
+let timerSet = 0;
 
-let timerSet = setInterval(setTimer, 1000);
-
-    function setTimer() {
-      if (stoppedFlag == true) {
-        clearInterval(timerSet)
-        s = 0;
-      }
-      else {
-        let timeValue = new Date(s * 1000).toISOString().substr(11, 8)
-
-        reDoButton.textContent = timeValue;
-        s++;
-      }
-    };
+function setTimer() {
+  if (stoppedFlag == true) {
+    clearInterval(timerSet)
+    s = 0;
+  }
+  else {
+    let timeValue = new Date(s * 1000).toISOString().substr(11, 8)
+    reDoButton.textContent = timeValue;
+    s++;
+  }
+};
 
 
 //sección mis GIFOS
 
-let gifosString = myGifosArray.toString();
+
 let ctnOfMyGifos = document.getElementById("ctnOfMyGifos");
+let emptyMessage = document.getElementById('emptyMyGifos'); //llamo a la sección vacia
 
-//(`https://api.giphy.com/v1/gifs/${gifosString}?&api_key=${apiKey}`)
-
-async function doSearchMyGifs(gifosString){ //función que hace la búsqueda
-    try {
-        if (myGifosArray.length == 1){
+async function doSearchMyGifs(arrayDeGifs, container){ //función que hace la búsqueda
+	try {
+		let gifosString = arrayDeGifs.toString();
+		console.log(gifosString);
+        if (arrayDeGifs.length == 1){
 			const resp = await fetch(`https://api.giphy.com/v1/gifs/${gifosString}?&api_key=${apiKey}`);
 			const respParsed = await resp.json();
 			respParsed.data.forEach( gif=>{    
-				fillingGifCardMygifos(gif, ctnOfMyGifos)}
+				fillingGifCard(gif, container)}
 				) 
-		}else if(myGifosArray.length > 1){
-			const resp = await fetch(`https://api.giphy.com/v1/gifs?ids=${gifosString}?&api_key=${apiKey}`);
-			const respParsed = await resp.json();+
+		}else if(arrayDeGifs.length > 1){
+			const resp = await fetch(`https://api.giphy.com/v1/gifs?ids=${gifosString},?&api_key=${apiKey}`);
+			const respParsed = await resp.json();
 			respParsed.data.forEach( gif=>{    
-				fillingGifCardMyGifos(gif, ctnOfMyGifos)}
+				fillingGifCard(gif, container)}
 				) 
 		}
-        
+        if(arrayDeGifs.length == 0) {
+			emptyMessage.classList.remove('hidden');
+            emptyMessage.classList.add('emptySection');
+        }
     } catch (error) {
         console.log(error);
     }
 };
 
-doSearchMyGifs(gifosString);
 
-function fillingGifCardMyGifos(gif, contenedor){ 
+//agregar a favoritos
+
+let favsCtn = document.getElementById("favsCtn");
+
+function addToFavourites(){
+	
+	favGifosArray.push(this.id);
+	localStorage.setItem('favGifs', JSON.stringify(favGifosArray));
+	
+}
+
+function deleteMyGifo(){
     
-    let gifCardTemplateClone= gifCardTemplate.cloneNode(true);
+}
 
-    let trueGif = gifCardTemplateClone.children[1].children[0];
-    trueGif.src=gif.images.fixed_height.url; //gif es el data[x]
-
-    let gifAlt = gifCardTemplateClone.children[1].children[0];
-    gifAlt.alt=gif.title;
-
-    let gifTitle = gifCardTemplateClone.children[0].children[0];
-    gifTitle.textContent=gif.title;
-
-    let gifUserName = gifCardTemplateClone.children[0].children[1];
-    gifUserName.textContent=gif.username;
-
-    //FALTA HACER EVENT LISTENERS
-	let gifErase = gifCardTemplateClone.children[2].children[0].children[0];
-	gifErase.classList.remove("fa-heart");
-	gifErase.classList.add("fa-trash-alt");
-    gifErase.id = gif.id; //le meto como id el id del gif
-    gifErase.addEventListener("click", addToFavourites);
-
-    let gifDownload = gifCardTemplateClone.children[2].children[1];
-    let gifExpand = gifCardTemplateClone.children[2].children[2];
-    //FALTA BANDA, SEGUIR... Seguir más
-    
-    contenedor.appendChild(gifCardTemplateClone);
-};

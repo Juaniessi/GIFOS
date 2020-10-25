@@ -22,8 +22,8 @@
         <nav>
              <ul>
                 <li><a id="modoNocturno" href="#modonocturno">Modo Nocturno</a></li>
-                <li><a href="#favoritos">Favoritos</a></li>
-                <li><a href="#misgifos">Mis GIFOS</a></li>
+                <li><a id="favoritos">Favoritos</a></li>
+                <li><a id="misGifosBtn">Mis GIFOS</a></li>
                 <li>
                     <button class="btnCrear"><i class="fas fa-plus"></i></button>
                 </li>
@@ -48,42 +48,47 @@
                 <p id="trendingWords"></p>
             </article>
         </section>
-        <section id="searchTitleResult" class="hidden">
+        <section id="searchTitleResult" class="searchTitleResult hidden">
             <h2 id="searchTitle"></h2>
             <div id="ctnOfGif">
                 <template id="gifCardTemplate"> <!-- template de la tarjetita de gif -->
                     <article class="gifArticle">
-                        <div class="gifInfo">
-                            <h4 class="gifTitle"></h4>
-                            <span class="gifUser"></span>
+                        <img src="" alt="" class="gifLoaded">
+                        <div class="filter">
+                            <div class="gifInfo">
+                                <h4 class="gifTitle"></h4>
+                                <span class="gifUser"></span>
+                            </div>
+                            <div class="gifBtns">
+                                <button class="gifFav"><i class="far fa-heart"></i></button>
+                                <button class="gifDownload"><i class="fas fa-download"></i></button>
+                                <button class="gifExpand"><i class="fas fa-expand-alt"></i></button>
+                            </div>
                         </div>
-                        <div class="gifLoadedCtn">
-                            <img src="" alt="" class="gifLoaded">
-                        </div>
-                        <div class="gifBtns">
-                            <button class="gifFav"><i class="far fa-heart"></i></button>
-                            <button class="gifDownload"><i class="fas fa-download"></i></button>
-                            <button class="gifExpand"><i class="fas fa-expand-alt"></i></button>
-                        </div>
-                        <div class="filter"></div>
                     </article>
                 </template>
             </div>
             <div id="loadMoreBtn" class="loadMoreBtn">
-                <button id="moreBtn">Ver más</button>
+                <button id="moreBtn" class="hidden">Ver más</button>
             </div>
         </section>
-        <section class="favs" id="favs">
-            <div></div>
+        <section class="favs hidden" id="favs">
+            <img src="img/icon-favoritos.svg" alt="favIcon">
+            <h2>Favoritos</h2>
+            <div id="emptyFavsSection" class="emptySection">
+                <img src="img/icon-fav-sin-contenido.svg" alt="Guarda tu primer gifo">
+                <span>"¡Guarda tu primer GIFO en Favoritos <br> para que se muestre aquí!"</span>
+            </div>
+            <div id="favsCtn"></div>
         </section>
-        <section class="misGifos">
+        <section id ="misGifos" class="misGifos hidden">
             <img src="img/icon-mis-gifos.svg" alt="Mis GIFOS">
             <h2>Mis GIFOS</h2>
-            <div id="emptyMygifos" class="emptySection">
+            <div id="emptyMygifos" class="hidden">
                 <img src="img/icon-mis-gifos-sin-contenido.svg" alt="Mis GIFOS sin contenido">
                 <span>¡Anímate a crear tuprimer GIFO!</span>
             </div>
-            <div id="ctnOfMyGifos"></div>
+            <div id="ctnOfMyGifos" class="ctnOfMyGifos"></div>
         </section>
         <section class="trending" id="trending">
             <h2>Trending GIFOS</h2>
@@ -152,6 +157,7 @@
     <script src="scripts/js.js"></script>
     <script src="scripts/light-dark-mode.js"></script>
     <script src="scripts/recordGif.js"></script>
-    <script src="scripts/carousel.js"></script>  
+    <script src="scripts/carousel.js"></script>
+    <script src="scripts/navBar.js"></script>
 </body>
 </html>

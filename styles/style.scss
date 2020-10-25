@@ -84,14 +84,6 @@ body{
                     }
                 }
             }
-            /* &:checked~label{ //esto lo dejo de usar, porque ahora uso una sola imagen
-                .closebtn{
-                    display: initial;
-                }
-                .menubtn{
-                    display: none;
-                }
-            } */
         }
 
         label{
@@ -228,12 +220,9 @@ body{
                 justify-content: space-between;
                 width: 100%;
                 .gifArticle{
-                    .gifLoadedCtn{
+                    .gifLoaded{
                         width: 100%;
-                        .gifLoaded{
-                            width: 100%;
-                            height: 10rem;
-                        }
+                        height: 10rem;
                     }
                 }
             }
@@ -243,7 +232,7 @@ body{
                 button{
                     cursor: pointer;
                     outline: none;
-                    border: 1px solid var(--primary-color);
+                    border: 1px solid var(--main_text_color);
                     border-radius: 25px;
                     background: none;
                     text-transform: uppercase;
@@ -301,7 +290,6 @@ body{
                     margin: 2rem auto;
                         .gifArticle{
                             margin-right: 30px;
-                            .gifLoadedCtn{
                                 .gifLoaded {
                                     position: relative;
                                     display: flex;
@@ -310,15 +298,12 @@ body{
                                     height: 275px;
                                     background-size: contain;
                                 }
-                            }
                         }    
                     }
                 }
             } 
         }
-        .hidden{
-            display: none;
-        }
+
         
         //filtros 
         .gifArticle{
@@ -359,7 +344,7 @@ body{
             }
             
         }
-        .misGifos{
+        .misGifos, .favs{
             margin: 2rem;
             @include behave-vertical;
             h2{
@@ -370,17 +355,14 @@ body{
                 line-height: 30px;
                 margin-bottom: 2.5rem;
             }
-            #ctnOfMyGifos{ //seteo estilos al titulo de la busqueda
+            #ctnOfMyGifos, #favsCtn{ //seteo estilos al titulo de la busqueda
                 display: flex;
                 flex-flow: row wrap;
                 width: 100%;
                 .gifArticle{
-                    .gifLoadedCtn{
+                    .gifLoaded{
                         width: 100%;
-                        .gifLoaded{
-                            width: 100%;
-                            height: 10rem;
-                        }
+                        height: 10rem;
                     }
                 }
             }
@@ -401,6 +383,92 @@ body{
                 line-height: 25px;
                 text-align: center;
             }
+        }
+        #fullscreenView{ //ver en fullscreen
+            background-color: var(--bg-max-view);
+            width: 100%;
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 10000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-flow: column nowrap;
+            .closeBtn{
+                position: absolute;
+                // top: 8rem;
+                top: 2rem;
+                right: 3rem;
+                color: var(--main_text_color);
+                font-size: 1.5rem;
+                cursor: pointer;
+            }
+            .gifLoaded{
+                width: 85%;
+                max-width: 695px;
+                max-height: 385px;
+            }
+            .filter{
+                width: 85%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                align-self: center;
+                max-width: 695px;
+                .gifInfo{
+                    width: 100%;
+                    text-align: left;
+                    line-height: 2rem;
+                    h4{
+                        font-family: 'Roboto', sans-serif;
+                        font-size: .7rem;
+                        font-weight: lighter;
+                        color: var(--text-color);
+                        text-transform: capitalize;
+                    }
+                    span{
+                        font-family: 'Roboto', sans-serif;
+                        font-size: .9rem;
+                        font-weight: bold;
+                        color: var(--text-color);
+                        text-transform: capitalize;
+                    }
+                }
+                .gifBtns{
+                        display: flex;
+                        justify-content: space-between;
+                        max-width: 150px;
+                        button{
+                            cursor: pointer;
+                            border: 1px solid #CED7E1; //ver este color
+                            border-radius: 6px;
+                            background: var(--bg);
+                            height: 36px;
+                            width: 36px;
+                            margin: .5rem;
+                            .fa-heart, .fa-download, .fa-trash-alt{
+                                color: var(--max-view-buttons);
+                                font-size: 1.3rem;
+                            }
+                        }
+                        // .gifFav{
+                        //     border: none;
+                        //     background: none;
+                        //     .fa-heart{
+                        //         color: var(--primary-color);
+                        //     }
+                        // }
+                        .gifExpand{
+                            display: none;
+                        }
+            
+                }
+            }     
+        }
+        .hidden{
+            display: none;
         }
     }
 

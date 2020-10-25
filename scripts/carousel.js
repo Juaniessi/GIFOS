@@ -21,26 +21,30 @@ function fillingGifCardTrend(gif, contenedor){
     
     let gifCardTemplateClone= gifCardTemplate.cloneNode(true);
 
-    let trueGif = gifCardTemplateClone.children[1].children[0];
+    let trueGif = gifCardTemplateClone.children[0];
     trueGif.src=gif.images.fixed_height.url; //gif es el data[x]
 
-    let gifAlt = gifCardTemplateClone.children[1].children[0];
+    let gifAlt = gifCardTemplateClone.children[0];
     gifAlt.alt=gif.title;
 
-    let gifTitle = gifCardTemplateClone.children[0].children[0];
+    let gifTitle = gifCardTemplateClone.children[1].children[0].children[0];
     gifTitle.textContent=gif.title;
 
-    let gifUserName = gifCardTemplateClone.children[0].children[1];
+    let gifUserName = gifCardTemplateClone.children[1].children[0].children[1];
     gifUserName.textContent=gif.username;
 
     //FALTA HACER EVENT LISTENERS
-    let gifFav = gifCardTemplateClone.children[2].children[0];
+    let gifFav = gifCardTemplateClone.children[1].children[1].children[0];
     gifFav.id = gif.id; //le meto como id el id del gif
     gifFav.addEventListener("click", addToFavourites);
 
-    let gifDownload = gifCardTemplateClone.children[2].children[1];
-    let gifExpand = gifCardTemplateClone.children[2].children[2];
-
+    let gifDownload = gifCardTemplateClone.children[1].children[1].children[1];
+    let gifExpandIcon = gifCardTemplateClone.children[1].children[1].children[2];
+    gifExpandIcon.addEventListener('click', () => {
+        fullscreenView();
+        gifExpandIcon.classList.add('hidden');
+    });
+    gifCardTemplateClone.addEventListener('click', fullscreenView);
     //FALTA BANDA, SEGUIR... Seguir más
     
     contenedor.appendChild(gifCardTemplateClone);

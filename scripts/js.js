@@ -6,8 +6,7 @@ let intro = document.getElementById("intro");
 let id = document.getElementById("searchTitleResult");
 let trending = document.getElementById("trending");
 let recordGif = document.getElementById("recordGif");
-let favs = document.getElementById("favs");
-let searchResul = document.getElementById("searchTitleResult");
+let searchResult = document.getElementById("searchTitleResult");
 
 //Barra de busqueda
 
@@ -52,8 +51,6 @@ async function autoCompletar(){
         }
 };
 
-//doSearch("cowboy beebop"); // lo hicimos para dejar de bucar como locos
-
 //Función de buscar, sale con fritas
 
 let gifCardTemplate = document.getElementById("gifCardTemplate").content.firstElementChild; //me traigo el articulo completo dentro del template
@@ -73,9 +70,8 @@ async function doSearch(search){ //función que hace la búsqueda
         let ctnTitle = document.getElementById("searchTitle");
         ctnTitle.textContent = searchBar.value;
 
-        
-        searchResul.classList.remove("hidden"); //muestro la sección
-
+        searchResult.classList.remove("hidden"); //muestro la sección
+        moreBtn.classList.remove("hidden");
         respParsed.data.forEach( gif=>{    //recorre el array completo y llena las tarjetas "n" veces con fillinfGifCard
             fillingGifCard(gif, ctnOfGif)}
             ) 
@@ -90,26 +86,45 @@ function fillingGifCard(gif, contenedor){
     
     let gifCardTemplateClone= gifCardTemplate.cloneNode(true);
 
-    let trueGif = gifCardTemplateClone.children[1].children[0];
+    let trueGif = gifCardTemplateClone.children[0];
     trueGif.src=gif.images.fixed_height.url; //gif es el data[x]
 
-    let gifAlt = gifCardTemplateClone.children[1].children[0];
+    let gifAlt = gifCardTemplateClone.children[0];
     gifAlt.alt=gif.title;
 
-    let gifTitle = gifCardTemplateClone.children[0].children[0];
+    let gifTitle = gifCardTemplateClone.children[1].children[0].children[0];
     gifTitle.textContent=gif.title;
 
-    let gifUserName = gifCardTemplateClone.children[0].children[1];
+    let gifUserName = gifCardTemplateClone.children[1].children[0].children[1];
     gifUserName.textContent=gif.username;
 
-    //FALTA HACER EVENT LISTENERS
-    let gifFav = gifCardTemplateClone.children[2].children[0];
+    //EVENT LISTENERS
+    let gifFav = gifCardTemplateClone.children[1].children[1].children[0].children[0];
     gifFav.id = gif.id; //le meto como id el id del gif
-    gifFav.addEventListener("click", addToFavourites);
+    
+    if (contenedor.classList.contains("ctnOfMyGifos")) { //El primer botón permitirá agregar/borrar favorito.
+		gifFav.classList.remove("fa-heart");
+		gifFav.classList.add("fa-trash-alt");
+		gifFav.addEventListener("click", deleteMyGifo);
+	} else { //El primer botón permitirá eliminar un gif de "Mis gifos".
+    const favorites = JSON.parse(localStorage.getItem("favGifs")); //voy a localStorage y busco la lista de favoritos
+    if (favorites.includes(gif.id)) {
+			gifFav.classList.remove("far");
+			gifFav.classList.add("fas");
+		}
+		gifFav.addEventListener("click", addToFavourites);    
+	}
 
-    let gifDownload = gifCardTemplateClone.children[2].children[1];
-    let gifExpand = gifCardTemplateClone.children[2].children[2];
-    //FALTA BANDA, SEGUIR... Seguir más
+
+    let gifDownload = gifCardTemplateClone.children[1].children[1].children[1];
+    gifDownload.addEventListener("click", downloadGif);
+
+    let gifExpandIcon = gifCardTemplateClone.children[1].children[1].children[2];
+    gifExpandIcon.addEventListener('click', () => {
+        fullscreenView();
+        gifExpandIcon.classList.add('hidden');
+    });
+    gifCardTemplateClone.addEventListener('click', fullscreenView);
     
     contenedor.appendChild(gifCardTemplateClone);
 };
@@ -192,28 +207,6 @@ if(e.keyCode===13 || e.keyCode===9){ //9 es para el enter de los teclados swiftk
     }
 });
 
-//botton grabar
-
-let createBtn = document.querySelector(".btnCrear");
-createBtn.addEventListener("click", ()=>{
-    intro.classList.add("hidden");
-    id.classList.add("hidden");
-    trending.classList.add("hidden");
-    recordGif.classList.remove("hidden");
-    favs.classList.add("hidden");
-    searchResul.classList.add("hidden");
-});
-
-//volver al inicio
-let logo = document.getElementById("loguito");
-logo.addEventListener("click", ()=>{
-    intro.classList.remove("hidden");
-    id.classList.remove("hidden");
-    trending.classList.remove("hidden");
-    recordGif.classList.add("hidden");
-    favs.classList.add("hidden");
-    searchResul.classList.add("hidden");
-} );
 
 //evento al boton "ver mas"
 
@@ -223,11 +216,41 @@ moreBtn.addEventListener("click", ()=>{
     doSearch(traerImput.value); //traerImput.value agarra el valor dentro de la barra de busqueda
 });
 
-//evento favoritos
+//Agrandar la pantalla
 
-function addToFavourites(){
-    if (localStorage.getItem("favourites")==null){
-        localStorage.setItem("favourites", `[${this.id}]`);
+function fullscreenView(e) {
+    let gif = this;
+    console.log(gif);
+
+    
+
+
+    if (!gif.classList.contains('fullscreenView')) {
+        gif.classList.remove('gifArticle');
+        gif.id = 'fullscreenView';
+        let iconClose = document.createElement('i');
+        iconClose.classList.add('fas', 'fa-times', 'closeBtn');
+        iconClose.addEventListener('click', (e) => {
+            let gif = e.target.parentElement;
+            gif.id = "";
+            gif.classList.add('gifArticle');
+            iconClose.classList.add("hidden"); // hice esto proque el navegador no borra el botón aveces.
+            iconClose.remove();
+            e.stopPropagation();
+        })
+        gif.appendChild(iconClose);
     }
-    console.log(localStorage);
+}
+
+//funcion para descargar GIFS
+
+async function downloadGif() {
+    console.log(this.parentElement.parentElement.parentElement.children[0].src);
+	const a = document.createElement('a');
+	const response = await fetch(this.parentElement.parentElement.parentElement.children[0].src);
+	const file = await response.blob();
+	a.download = `${this.dataset.title}.gif`;
+	a.href = window.URL.createObjectURL(file);
+	a.dataset.downloadurl = ['application/octet-stream', a.download, a.href].join(':');
+	a.click()
 }
