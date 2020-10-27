@@ -101,30 +101,26 @@ function fillingGifCard(gif, contenedor){
     //EVENT LISTENERS
     let gifFav = gifCardTemplateClone.children[1].children[1].children[0].children[0];
     gifFav.id = gif.id; //le meto como id el id del gif
-    
     if (contenedor.classList.contains("ctnOfMyGifos")) { //El primer botón permitirá agregar/borrar favorito.
 		gifFav.classList.remove("fa-heart");
 		gifFav.classList.add("fa-trash-alt");
 		gifFav.addEventListener("click", deleteMyGifo);
 	} else { //El primer botón permitirá eliminar un gif de "Mis gifos".
-    const favorites = JSON.parse(localStorage.getItem("favGifs")); //voy a localStorage y busco la lista de favoritos
-    if (favorites.includes(gif.id)) {
-			gifFav.classList.remove("far");
-			gifFav.classList.add("fas");
-		}
-		gifFav.addEventListener("click", addToFavourites);    
+        const favorites = JSON.parse(localStorage.getItem("favGifs")); //voy a localStorage y busco la lista de favoritos
+        if (favorites.includes(gif.id)) {
+	    		gifFav.classList.remove("far");
+	    		gifFav.classList.add("fas");
+	    	}
+	    gifFav.addEventListener("click", addToFavourites);    
 	}
-
 
     let gifDownload = gifCardTemplateClone.children[1].children[1].children[1];
     gifDownload.addEventListener("click", downloadGif);
 
     let gifExpandIcon = gifCardTemplateClone.children[1].children[1].children[2];
-    gifExpandIcon.addEventListener('click', () => {
-        fullscreenView();
-        gifExpandIcon.classList.add('hidden');
-    });
-    gifCardTemplateClone.addEventListener('click', fullscreenView);
+    gifExpandIcon.addEventListener('click', fullscreenView);       
+    
+    trueGif.addEventListener('click', fullscreenView);
     
     contenedor.appendChild(gifCardTemplateClone);
 };
@@ -219,11 +215,11 @@ moreBtn.addEventListener("click", ()=>{
 //Agrandar la pantalla
 
 function fullscreenView(e) {
-    let gif = this;
-    console.log(gif);
-
-    
-
+    let gif = this.parentElement;
+    console.log(this);
+    if (gif.classList.contains("gifBtns")){
+        gif=gif.parentElement.parentElement
+    }
 
     if (!gif.classList.contains('fullscreenView')) {
         gif.classList.remove('gifArticle');
@@ -245,7 +241,6 @@ function fullscreenView(e) {
 //funcion para descargar GIFS
 
 async function downloadGif() {
-    console.log(this.parentElement.parentElement.parentElement.children[0].src);
 	const a = document.createElement('a');
 	const response = await fetch(this.parentElement.parentElement.parentElement.children[0].src);
 	const file = await response.blob();

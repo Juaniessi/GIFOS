@@ -166,20 +166,33 @@ async function fifthStage() {
 	startBtn.classList.add("hidden");
 	stage2.classList.remove("isCurrent");
 	stage3.classList.add("isCurrent");
+
+	//descargar gifo recien creado
+	
+	let downloadMyGif = document.getElementById("gifDownload");
+	downloadMyGif.addEventListener("click", downloadGif);
+	
+	//copiar link de gifo creado
+
+
 }
 
 function onStop() {
 	//Generar el archivo para subir
 	stoppedFlag = true;
-
 }
 
-
 //cambiar imagen a checked
+
+
 function cambiarACheckd (){
 	let imagenDeCarga = document.querySelector(".girar");
 	imagenDeCarga.setAttribute("src", "img/check.svg");
 	imagenDeCarga.style.animation="none";
+	let btnUploaded = document.getElementById("btnUploaded");//me triago la botonera
+	btnUploaded.classList.remove("hidden");
+	btnUploaded.classList.add("btnUploaded");
+
 }; 
 
 
@@ -188,10 +201,6 @@ async function awaitUploadAnimation(){
 	createOverlay = document.querySelector("#create-overlay");
 	createOverlay.classList.remove("hidden");
 	createOverlay.classList.add("create-overlay");
-
-
-//creamos el titulo
-//creamos la imagen
 }
 
 // Timer para el grabador
@@ -217,18 +226,17 @@ function setTimer() {
 
 
 let ctnOfMyGifos = document.getElementById("ctnOfMyGifos");
-let emptyMessage = document.getElementById('emptyMyGifos'); //llamo a la sección vacia
+let emptyMessage = document.getElementById("emptyMyGifos"); //llamo a la sección vacia
 
 async function doSearchMyGifs(arrayDeGifs, container){ //función que hace la búsqueda
 	try {
 		let gifosString = arrayDeGifs.toString();
-		console.log(gifosString);
-        if (arrayDeGifs.length == 1){
+        if (arrayDeGifs.length === 1){
 			const resp = await fetch(`https://api.giphy.com/v1/gifs/${gifosString}?&api_key=${apiKey}`);
 			const respParsed = await resp.json();
-			respParsed.data.forEach( gif=>{    
-				fillingGifCard(gif, container)}
-				) 
+			const gif =respParsed.data;
+			fillingGifCard(gif, container)
+
 		}else if(arrayDeGifs.length > 1){
 			const resp = await fetch(`https://api.giphy.com/v1/gifs?ids=${gifosString},?&api_key=${apiKey}`);
 			const respParsed = await resp.json();
@@ -236,9 +244,9 @@ async function doSearchMyGifs(arrayDeGifs, container){ //función que hace la b�
 				fillingGifCard(gif, container)}
 				) 
 		}
-        if(arrayDeGifs.length == 0) {
-			emptyMessage.classList.remove('hidden');
-            emptyMessage.classList.add('emptySection');
+        if(arrayDeGifs.length === 0) {
+			emptyMessage.classList.remove("hidden");
+            emptyMessage.classList.add("emptySection");
         }
     } catch (error) {
         console.log(error);
@@ -257,7 +265,41 @@ function addToFavourites(){
 	
 }
 
-function deleteMyGifo(){
-    
+//borrar un gif creado por nosotros
+
+function deleteMyGifo() {
+	myGifosArray = myGifosArray.filter((gifo) => gifo != this.id);
+	localStorage.setItem("myGifos", JSON.stringify(myGifosArray));
+	const gifCard = this.parentElement.parentElement.parentElement.parentElement;
+	console.log(gifCard);
+	removeGifCardFromDOM(gifCard);
 }
 
+//quitar un gif de la lsita de favoritos o "mis gifos"
+
+function removeGifCardFromDOM(gifCard) {
+	const ctn = gifCard.parentElement.parentElement;
+	console.log(ctn);
+	gifCard.remove();
+	if (ctn.children.length === 0) {
+		ctn.parentElement.classList.add("hidden");
+		ctn.parentElement.nextElementSibling.classList.add("hidden");
+	}
+}
+
+//boton compartir de gifo creado
+
+let gifoId = myGifosArray[myGifosArray.length-1]; //variable que es igual al id del ultimo gif creado
+
+let shareBtn = document.getElementById("gifShare");
+shareBtn.addEventListener("click", copyToClipboard);
+
+function copyToClipboard() { //Copia al cortapapeles el link del gif en Giphy.
+	var input = document.createElement('input');
+	document.body.appendChild(input)
+	input.value = `https://giphy.com/gifs/${gifoId}`;
+	input.select();
+	document.execCommand("copy");
+	input.remove();
+	alert("Link copiado al portapeles.");
+  }

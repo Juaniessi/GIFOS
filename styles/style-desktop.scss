@@ -392,8 +392,26 @@
             .girar{
                 animation: spin 1s infinite linear;
             }
-            
-            
+            .btnUploaded{
+                position: relative;
+                display: flex; 
+                bottom: 8rem;
+                align-self: flex-end;
+                button{
+                    cursor: pointer;
+                    border: 1px solid #CED7E1; //ver este color
+                    border-radius: 6px;
+                    background: #FFFFFF;
+                    opacity: 0.9;
+                    height: 32px;
+                    width: 32px;
+                    margin: 0 .5rem;
+                    .fa-download, .fa-link{
+                        color: var(--deselect-icons-color);
+                        font-size: 1.3rem;
+                    }
+                }    
+            }
             //gif article para el trending
             .gifArticle{
                 

@@ -9,7 +9,8 @@ html {
   --btn_hover: white;
   --mainGreen: #50E3C2;
   --bg-max-view: rgba(255,255,255,0.90);
-  --max-view-buttons: rgba(87,46,229,0.70); }
+  --max-view-buttons: rgba(87,46,229,0.70);
+  --deselect-icons-color: rgba(87,46,229,0.70); }
 
 html[data-theme='dark'] {
   --background: #37383C;
@@ -317,7 +318,8 @@ body main {
       width: 100%;
       height: 100%;
       top: 0;
-      left: 0; }
+      left: 0;
+      z-index: 10000000; }
   body main .misGifos, body main .favs {
     margin: 2rem;
     display: flex;
@@ -380,7 +382,8 @@ body main {
       justify-content: space-between;
       align-items: center;
       align-self: center;
-      max-width: 695px; }
+      max-width: 695px;
+      z-index: 10000000; }
       body main #fullscreenView .filter .gifInfo {
         width: 100%;
         text-align: left;

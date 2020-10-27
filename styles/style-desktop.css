@@ -9,7 +9,8 @@ html {
   --btn_hover: white;
   --mainGreen: #50E3C2;
   --bg-max-view: rgba(255,255,255,0.90);
-  --max-view-buttons: rgba(87,46,229,0.70); }
+  --max-view-buttons: rgba(87,46,229,0.70);
+  --deselect-icons-color: rgba(87,46,229,0.70); }
 
 html[data-theme='dark'] {
   --background: #37383C;
@@ -343,6 +344,23 @@ html[data-theme='dark'] {
     align-items: center; }
   body main .girar {
     animation: spin 1s infinite linear; }
+  body main .btnUploaded {
+    position: relative;
+    display: flex;
+    bottom: 8rem;
+    align-self: flex-end; }
+    body main .btnUploaded button {
+      cursor: pointer;
+      border: 1px solid #CED7E1;
+      border-radius: 6px;
+      background: #FFFFFF;
+      opacity: 0.9;
+      height: 32px;
+      width: 32px;
+      margin: 0 .5rem; }
+      body main .btnUploaded button .fa-download, body main .btnUploaded button .fa-link {
+        color: var(--deselect-icons-color);
+        font-size: 1.3rem; }
   body main .gifArticle {
     position: relative;
     width: 25%; }

@@ -1,4 +1,7 @@
 let carousel = document.querySelector(".carousel");
+if (localStorage.getItem("favGifs") === null){
+    localStorage.setItem("favGifs", "[]");
+}
 
 async function doSearchTrending(){ //función que hace la búsqueda de los gif en trending
     try {
@@ -6,7 +9,7 @@ async function doSearchTrending(){ //función que hace la búsqueda de los gif e
         const respParsed = await resp.json();
 
         respParsed.data.forEach(gif=>{    //recorre el array completo y llena las tarjetas "n" veces con fillinfGifCard
-            fillingGifCardTrend(gif, carousel)}
+            fillingGifCard(gif, carousel)}
             ) 
     } catch (error) {
         console.log(error);
@@ -14,42 +17,6 @@ async function doSearchTrending(){ //función que hace la búsqueda de los gif e
 };
 
 doSearchTrending();
-
-//función que rellena las tyerjetas de gifs clonando el nodo
-
-function fillingGifCardTrend(gif, contenedor){ 
-    
-    let gifCardTemplateClone= gifCardTemplate.cloneNode(true);
-
-    let trueGif = gifCardTemplateClone.children[0];
-    trueGif.src=gif.images.fixed_height.url; //gif es el data[x]
-
-    let gifAlt = gifCardTemplateClone.children[0];
-    gifAlt.alt=gif.title;
-
-    let gifTitle = gifCardTemplateClone.children[1].children[0].children[0];
-    gifTitle.textContent=gif.title;
-
-    let gifUserName = gifCardTemplateClone.children[1].children[0].children[1];
-    gifUserName.textContent=gif.username;
-
-    //FALTA HACER EVENT LISTENERS
-    let gifFav = gifCardTemplateClone.children[1].children[1].children[0];
-    gifFav.id = gif.id; //le meto como id el id del gif
-    gifFav.addEventListener("click", addToFavourites);
-
-    let gifDownload = gifCardTemplateClone.children[1].children[1].children[1];
-    let gifExpandIcon = gifCardTemplateClone.children[1].children[1].children[2];
-    gifExpandIcon.addEventListener('click', () => {
-        fullscreenView();
-        gifExpandIcon.classList.add('hidden');
-    });
-    gifCardTemplateClone.addEventListener('click', fullscreenView);
-    //FALTA BANDA, SEGUIR... Seguir más
-    
-    contenedor.appendChild(gifCardTemplateClone);
-};
-
 
 //botones de movimiento
 let carrouselScroll = 0;

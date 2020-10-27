@@ -60,9 +60,15 @@
                                 <span class="gifUser"></span>
                             </div>
                             <div class="gifBtns">
-                                <button class="gifFav"><i class="far fa-heart"></i></button>
-                                <button class="gifDownload"><i class="fas fa-download"></i></button>
-                                <button class="gifExpand"><i class="fas fa-expand-alt"></i></button>
+                                <button class="gifFav">
+                                    <i class="far fa-heart"></i>
+                                </button>
+                                <button class="gifDownload">
+                                    <i class="fas fa-download"></i>
+                                </button>
+                                <button class="gifExpand">
+                                    <i class="fas fa-expand-alt"></i>
+                                </button>
                             </div>
                         </div>
                     </article>
@@ -75,20 +81,26 @@
         <section class="favs hidden" id="favs">
             <img src="img/icon-favoritos.svg" alt="favIcon">
             <h2>Favoritos</h2>
-            <div id="emptyFavsSection" class="emptySection">
+            <div id="favsCtn"></div>
+            <div id="loadMoreBtnFav" class="loadMoreBtn">
+                <button id="moreBtn" class="hidden">Ver más</button>
+            </div>
+            <div id="emptyFavsSection" class="emptySection hidden">
                 <img src="img/icon-fav-sin-contenido.svg" alt="Guarda tu primer gifo">
                 <span>"¡Guarda tu primer GIFO en Favoritos <br> para que se muestre aquí!"</span>
-            </div>
-            <div id="favsCtn"></div>
+            </div> 
         </section>
         <section id ="misGifos" class="misGifos hidden">
             <img src="img/icon-mis-gifos.svg" alt="Mis GIFOS">
             <h2>Mis GIFOS</h2>
+            <div id="ctnOfMyGifos" class="ctnOfMyGifos"></div>
+            <div id="loadMoreBtnMy" class="loadMoreBtn">
+                <button id="moreBtn" class="hidden">Ver más</button>
+            </div>
             <div id="emptyMygifos" class="hidden">
                 <img src="img/icon-mis-gifos-sin-contenido.svg" alt="Mis GIFOS sin contenido">
                 <span>¡Anímate a crear tuprimer GIFO!</span>
-            </div>
-            <div id="ctnOfMyGifos" class="ctnOfMyGifos"></div>
+            </div>      
         </section>
         <section class="trending" id="trending">
             <h2>Trending GIFOS</h2>
@@ -122,6 +134,14 @@
                     <div id="create-overlay" class="hidden">
                         <img src="img/loader.svg" alt="loader" class="girar">
                         <p>Estamos subiendo tu GIFO</p>
+                        <div id="btnUploaded" class="hidden">
+                            <button class="gifDownload" id="gifDownload">
+                                <i class="fas fa-download"></i>
+                            </button>
+                            <button class="gifShare" id="gifShare">
+                                <i class="fas fa-link"></i>
+                            </button>
+                        </div>
                     </div>
                     <video src="" id="gif-capture" class="hidden" controls autoplay></video>
                     <h4 id="create-title">Aquí podrás <br>crear tus propios GIFOS</h4>
@@ -138,8 +158,7 @@
                     </div>
                     <img src="img/pelicula.svg" alt="rollo de pelicula" class="filmIcon" id="filmIcon">
                 </div>
-                <button id="start-btn" class="startButton">Comenzar</button>
-                
+                <button id="start-btn" class="startButton">Comenzar</button>                
             </article>
         </section>
     </main>
@@ -156,7 +175,7 @@
     </footer>
     <script src="scripts/js.js"></script>
     <script src="scripts/light-dark-mode.js"></script>
-    <script src="scripts/recordGif.js"></script>
+    <script src="scripts/record-gifCardBtn.js"></script>
     <script src="scripts/carousel.js"></script>
     <script src="scripts/navBar.js"></script>
 </body>
