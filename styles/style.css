@@ -340,6 +340,25 @@ body main {
       body main .misGifos #ctnOfMyGifos .gifArticle .gifLoaded, body main .misGifos #favsCtn .gifArticle .gifLoaded, body main .favs #ctnOfMyGifos .gifArticle .gifLoaded, body main .favs #favsCtn .gifArticle .gifLoaded {
         width: 100%;
         height: 10rem; }
+    body main .misGifos .loadMoreBtn, body main .favs .loadMoreBtn {
+      display: flex;
+      justify-content: center;
+      align-items: center; }
+      body main .misGifos .loadMoreBtn button, body main .favs .loadMoreBtn button {
+        cursor: pointer;
+        outline: none;
+        border: 1px solid var(--main_text_color);
+        border-radius: 25px;
+        background: none;
+        text-transform: uppercase;
+        font-family: 'Montserrat', sans-serif;
+        color: var(--primary-color);
+        font-size: 13px;
+        font-weight: bold;
+        height: 3rem;
+        width: 7.9rem;
+        margin-top: 4rem;
+        margin-bottom: 4rem; }
   body main .emptySection {
     display: flex;
     flex-flow: column wrap;

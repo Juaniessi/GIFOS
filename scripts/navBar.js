@@ -12,10 +12,11 @@ createBtn.addEventListener("click", ()=>{
 });
 
 //botton mis GIFOS
+
 let seccionGifos = document.getElementById("misGifos");
 
 let misGifosBtn = document.getElementById("misGifosBtn");
-    misGifosBtn.addEventListener("click", ()=>{
+misGifosBtn.addEventListener("click", ()=>{
     intro.classList.add("hidden");
     seccionGifos.classList.remove("hidden");
     trending.classList.remove("hidden");
@@ -23,7 +24,8 @@ let misGifosBtn = document.getElementById("misGifosBtn");
     favs.classList.add("hidden");
     searchResult.classList.add("hidden");
     ctnOfMyGifos.innerHTML = "";
-    doSearchMyGifs(myGifosArray, ctnOfMyGifos);
+    contadorOfViewMore = 0;
+    doSearchMyGifs(myGifosArray, ctnOfMyGifos, moreMyGifBtn);
 });
 
 //botton Favoritos
@@ -31,7 +33,7 @@ let misGifosBtn = document.getElementById("misGifosBtn");
 let seccionFavoritos = document.getElementById("favs");
 
 let favoritosBtn = document.getElementById("favoritos");
-    favoritosBtn.addEventListener("click", ()=>{
+favoritosBtn.addEventListener("click", ()=>{
     intro.classList.add("hidden");
     id.classList.add("hidden");
     trending.classList.remove("hidden");
@@ -40,7 +42,8 @@ let favoritosBtn = document.getElementById("favoritos");
     searchResult.classList.add("hidden");
     seccionGifos.classList.add("hidden");
     favsCtn.innerHTML = "";
-    doSearchMyGifs(favGifosArray, favsCtn);
+    contadorOfViewMore = 0;
+    doSearchMyGifs(favGifosArray, favsCtn, moreFavBtn);
 });
 
 //volver al inicio

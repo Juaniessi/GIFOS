@@ -17,6 +17,7 @@ if (favGifosArray === null){
 	favGifosArray = [];
 }
 
+let favsCtn = document.getElementById("favsCtn");
 let recorder;
 let gif;
 
@@ -171,10 +172,6 @@ async function fifthStage() {
 	
 	let downloadMyGif = document.getElementById("gifDownload");
 	downloadMyGif.addEventListener("click", downloadGif);
-	
-	//copiar link de gifo creado
-
-
 }
 
 function onStop() {
@@ -221,33 +218,58 @@ function setTimer() {
   }
 };
 
-
 //sección mis GIFOS
 
-
 let ctnOfMyGifos = document.getElementById("ctnOfMyGifos");
-let emptyMessage = document.getElementById("emptyMyGifos"); //llamo a la sección vacia
+let emptyMessage = document.getElementById("emptyFavsSection"); //llamo a la sección favortios vacia
+let emptyMessage2 = document.getElementById("emptyMygifos"); //llamo a la sección mis gifos vacia
 
-async function doSearchMyGifs(arrayDeGifs, container){ //función que hace la búsqueda
+//botones de ver más
+
+let moreFavBtn = document.getElementById("moreFavBtn");
+moreFavBtn.addEventListener("click", () => {doSearchMyGifs(favGifosArray, favsCtn, moreFavBtn)});
+
+let moreMyGifBtn = document.getElementById("moreMyGifBtn");
+moreMyGifBtn.addEventListener("click", () => {doSearchMyGifs(myGifosArray ,ctnOfMyGifos ,moreMyGifBtn)});
+
+let contadorOfViewMore = 0
+
+async function doSearchMyGifs(arrayDeGifs, container, button){ //función que hace la búsqueda	
 	try {
-		let gifosString = arrayDeGifs.toString();
-        if (arrayDeGifs.length === 1){
+		let arrayCortado = arrayDeGifs.slice(12*contadorOfViewMore, 12*contadorOfViewMore+12); //corto array de 12 en 12 y estringifico
+		let gifosString = arrayCortado.toString(); 
+
+		if (arrayDeGifs.length === 1){
 			const resp = await fetch(`https://api.giphy.com/v1/gifs/${gifosString}?&api_key=${apiKey}`);
 			const respParsed = await resp.json();
 			const gif =respParsed.data;
 			fillingGifCard(gif, container)
-
 		}else if(arrayDeGifs.length > 1){
 			const resp = await fetch(`https://api.giphy.com/v1/gifs?ids=${gifosString},?&api_key=${apiKey}`);
 			const respParsed = await resp.json();
-			respParsed.data.forEach( gif=>{    
+			respParsed.data.forEach(gif=>{    
 				fillingGifCard(gif, container)}
-				) 
+			)						
 		}
-        if(arrayDeGifs.length === 0) {
+
+		contadorOfViewMore++
+
+        if(arrayDeGifs.length === 0 || arrayDeGifs === null) { // if para mostrar el mensaje de sección vacía
 			emptyMessage.classList.remove("hidden");
-            emptyMessage.classList.add("emptySection");
-        }
+			emptyMessage.classList.add("emptySection");
+			emptyMessage2.classList.remove("hidden");
+			emptyMessage2.classList.add("emptySection");
+        }else{
+			emptyMessage.classList.add("hidden");
+			emptyMessage.classList.remove("emptySection");
+			emptyMessage2.classList.add("hidden");
+			emptyMessage2.classList.remove("emptySection");
+		}
+		if(arrayCortado.length < 12){ 
+			button.classList.add('hidden');
+		}else{
+			button.classList.remove('hidden');
+		}
     } catch (error) {
         console.log(error);
     }
@@ -256,13 +278,10 @@ async function doSearchMyGifs(arrayDeGifs, container){ //función que hace la b�
 
 //agregar a favoritos
 
-let favsCtn = document.getElementById("favsCtn");
 
-function addToFavourites(){
-	
+function addToFavourites(){	
 	favGifosArray.push(this.id);
 	localStorage.setItem('favGifs', JSON.stringify(favGifosArray));
-	
 }
 
 //borrar un gif creado por nosotros
@@ -275,7 +294,7 @@ function deleteMyGifo() {
 	removeGifCardFromDOM(gifCard);
 }
 
-//quitar un gif de la lsita de favoritos o "mis gifos"
+//quitar un gif de la lista de favoritos o "mis gifos"
 
 function removeGifCardFromDOM(gifCard) {
 	const ctn = gifCard.parentElement.parentElement;
@@ -285,6 +304,16 @@ function removeGifCardFromDOM(gifCard) {
 		ctn.parentElement.classList.add("hidden");
 		ctn.parentElement.nextElementSibling.classList.add("hidden");
 	}
+}
+
+//quitar un gif de favoritos
+
+function removeFromFav() {
+	favGifosArray = favGifosArray.filter((gifo) => gifo != this.id);
+	localStorage.setItem("favGifs", JSON.stringify(favGifosArray));
+	const gifCard = this.parentElement.parentElement.parentElement.parentElement;
+	console.log(gifCard);
+	removeGifCardFromDOM(gifCard);
 }
 
 //boton compartir de gifo creado

@@ -466,7 +466,8 @@ html[data-theme='dark'] {
         margin: 0 0 0 5rem; }
       body footer div .share {
         margin: 0 0 0 0;
-        justify-content: space-evenly; } }
+        justify-content: space-evenly;
+        width: 30%; } }
 @media (max-width: 1024px) {
   .carouselWraper {
     max-width: 980px; } }

@@ -107,11 +107,17 @@ function fillingGifCard(gif, contenedor){
 		gifFav.addEventListener("click", deleteMyGifo);
 	} else { //El primer botón permitirá eliminar un gif de "Mis gifos".
         const favorites = JSON.parse(localStorage.getItem("favGifs")); //voy a localStorage y busco la lista de favoritos
-        if (favorites.includes(gif.id)) {
-	    		gifFav.classList.remove("far");
-	    		gifFav.classList.add("fas");
-	    	}
-	    gifFav.addEventListener("click", addToFavourites);    
+        
+        if (favorites.includes(gif.id)) { //cambio corazon vacio por lleno
+	    	gifFav.classList.remove("far");
+	    	gifFav.classList.add("fas");
+	    }
+        
+        if (gifFav.classList.contains("fas")){ //agrego event listener para borrar de mis gifos
+            gifFav.addEventListener("click", removeFromFav);
+        }else{
+            gifFav.addEventListener("click", addToFavourites);
+        }
 	}
 
     let gifDownload = gifCardTemplateClone.children[1].children[1].children[1];
@@ -249,3 +255,4 @@ async function downloadGif() {
 	a.dataset.downloadurl = ['application/octet-stream', a.download, a.href].join(':');
 	a.click()
 }
+
