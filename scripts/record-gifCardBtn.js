@@ -5,6 +5,7 @@ let createTitle = document.getElementById("create-title");
 let crSubTitle = document.getElementById("create-subtitle");
 let counter = document.getElementById("counter");
 let reDoButton = counter.children[0];
+let gifBlob = null;
 let myGifosArray = JSON.parse(localStorage.getItem("myGifos"));
 
 if (myGifosArray === null){
@@ -126,6 +127,8 @@ function fourthStage() {
 	
 	gif = recorder.getBlob();
 
+	gifBlob = gif;
+
 	startBtn.textContent = "SUBIR GIFO";
 	reDoButton.textContent = "REPETIR CAPTURA";
 	reDoButton.classList.add("special-hover");
@@ -171,7 +174,7 @@ async function fifthStage() {
 	//descargar gifo recien creado
 	
 	let downloadMyGif = document.getElementById("gifDownload");
-	downloadMyGif.addEventListener("click", downloadGif);
+	downloadMyGif.addEventListener("click", downloadCreatedGif);
 }
 
 function onStop() {
@@ -275,9 +278,7 @@ async function doSearchMyGifs(arrayDeGifs, container, button){ //función que ha
     }
 };
 
-
 //agregar a favoritos
-
 
 function addToFavourites(){	
 	favGifosArray.push(this.id);
@@ -290,7 +291,6 @@ function deleteMyGifo() {
 	myGifosArray = myGifosArray.filter((gifo) => gifo != this.id);
 	localStorage.setItem("myGifos", JSON.stringify(myGifosArray));
 	const gifCard = this.parentElement.parentElement.parentElement.parentElement;
-	console.log(gifCard);
 	removeGifCardFromDOM(gifCard);
 }
 
@@ -298,12 +298,13 @@ function deleteMyGifo() {
 
 function removeGifCardFromDOM(gifCard) {
 	const ctn = gifCard.parentElement.parentElement;
-	console.log(ctn);
-	gifCard.remove();
+	if(!ctn.classList.contains("carousel-ctn") && !ctn.classList.contains("searchTitleResult")){ //no borrar si esta en el carousel
+		gifCard.remove()
+	};
 	if (ctn.children.length === 0) {
 		ctn.parentElement.classList.add("hidden");
 		ctn.parentElement.nextElementSibling.classList.add("hidden");
-	}
+	};
 }
 
 //quitar un gif de favoritos
@@ -312,18 +313,16 @@ function removeFromFav() {
 	favGifosArray = favGifosArray.filter((gifo) => gifo != this.id);
 	localStorage.setItem("favGifs", JSON.stringify(favGifosArray));
 	const gifCard = this.parentElement.parentElement.parentElement.parentElement;
-	console.log(gifCard);
 	removeGifCardFromDOM(gifCard);
 }
 
 //boton compartir de gifo creado
 
-let gifoId = myGifosArray[myGifosArray.length-1]; //variable que es igual al id del ultimo gif creado
-
 let shareBtn = document.getElementById("gifShare");
 shareBtn.addEventListener("click", copyToClipboard);
 
-function copyToClipboard() { //Copia al cortapapeles el link del gif en Giphy.
+function copyToClipboard() { //Copia al cortapapeles el link del gif en Giphy.	
+	let gifoId = myGifosArray[myGifosArray.length-1]; //variable que es igual al id del ultimo gif creado
 	var input = document.createElement('input');
 	document.body.appendChild(input)
 	input.value = `https://giphy.com/gifs/${gifoId}`;
@@ -332,3 +331,15 @@ function copyToClipboard() { //Copia al cortapapeles el link del gif en Giphy.
 	input.remove();
 	alert("Link copiado al portapeles.");
   }
+
+  //funcion para descargar GIFS recien creados
+
+function downloadCreatedGif() {
+	const a = document.createElement('a');
+	const file = gifBlob;
+	a.download = `${this.dataset.title}.gif`;
+	a.href = window.URL.createObjectURL(file);
+	a.dataset.downloadurl = ['application/octet-stream', a.download, a.href].join(':');
+	a.click()
+}
+

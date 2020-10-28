@@ -221,8 +221,10 @@ body{
                 width: 100%;
                 .gifArticle{
                     .gifLoaded{
-                        width: 100%;
+                        width: 90%;
                         height: 10rem;
+                        margin: 0.2rem;
+
                     }
                 }
             }
@@ -360,10 +362,12 @@ body{
                 display: flex;
                 flex-flow: row wrap;
                 width: 100%;
+                justify-content: center;
                 .gifArticle{
                     .gifLoaded{
-                        width: 100%;
+                        width: 90%;
                         height: 10rem;
+                        margin: 0.2rem;
                     }
                 }
             }
@@ -390,7 +394,7 @@ body{
             }
         }
 
-        .emptySection{
+        .emptySection{ //secciones vacías
             display: flex;
             flex-flow: column wrap;
             margin: 2rem 2rem 4rem;

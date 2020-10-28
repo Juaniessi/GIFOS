@@ -39,7 +39,6 @@
                     <i class="fas fa-times" id="cerrarBusqueda"></i>
                     <input type="text" class="search" id="search-bar" placeholder="Busca GIFOS y más">
                     <i class="fas fa-search" id="lupaDeBusqueda"></i>
-                    <label for="search"></label>
                 </div>
                 <div id="sugestionCtn"></div>
             </div>
@@ -49,7 +48,7 @@
             </article>
         </section>
         <section id="searchTitleResult" class="searchTitleResult hidden">
-            <h2 id="searchTitle"></h2>
+            <h2 id="searchTitle">Tu Busqueda</h2>
             <div id="ctnOfGif">
                 <template id="gifCardTemplate"> <!-- template de la tarjetita de gif -->
                     <article class="gifArticle">
@@ -76,6 +75,10 @@
             </div>
             <div id="loadMoreBtn" class="loadMoreBtn">
                 <button id="moreBtn" class="hidden">Ver más</button>
+            </div>
+            <div id="emptyMessageSearch" class="hidden">
+                <img src="img/icon-busqueda-sin-resultado.svg" alt="ouch!">
+                <span>Intenta con otra búsqueda.</span>
             </div>
         </section>
         <section class="favs hidden" id="favs">
@@ -120,6 +123,7 @@
             </div>
         </section>
         <section class="recordGif hidden" id="recordGif">
+            <h2 class="hidden">Grabar</h2>
             <article class="articleRecord">
                 <div class="imgCamera">
                     <img src="img/camara.svg" alt="camara" class="camara" id="camara">
@@ -143,7 +147,7 @@
                             </button>
                         </div>
                     </div>
-                    <video src="" id="gif-capture" class="hidden" controls autoplay></video>
+                    <video id="gif-capture" class="hidden" controls autoplay></video>
                     <h4 id="create-title">Aquí podrás <br>crear tus propios GIFOS</h4>
                     <p id="create-subtitle">¡Crea tu GIFO en sólo 3 pasos! <br>(sólo necesitas una cámara para grabar un video)</p>
                 </div>
@@ -166,14 +170,14 @@
         <div>
             <h3>Compartir en:</h3>
             <div class="share">
-                <a href=""><i class="fab fa-facebook-f"></i></a>
-                <a href=""><i class="fab fa-twitter"></i></a>
-                <a href=""><i class="fab fa-instagram"></i></a>
+                <a href="https://www.facebook.com/Acamica.org/" target="blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://twitter.com/Acamica_com" target="blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.instagram.com/acamica/" target="blank"><i class="fab fa-instagram"></i></a>
             </div>
         </div>
         <p>&copy; GIFOS 2020 All Rights Reserved.</p>
     </footer>
-    <script src="scripts/js.js"></script>
+    <script src="scripts/script.js"></script>
     <script src="scripts/light-dark-mode.js"></script>
     <script src="scripts/record-gifCardBtn.js"></script>
     <script src="scripts/carousel.js"></script>

@@ -3,7 +3,7 @@ html.themeTransition *,
 html.themeTransition *:before,
 html.themeTransition *:after {
   transition: all 500ms;
-  transition-delay: 0;
+  transition-delay: 0s;
 }
 
 body{

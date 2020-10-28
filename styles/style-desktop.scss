@@ -33,7 +33,7 @@
                             color: #FF9CAFC3;
                         }
                         a{
-                            @include word-bundle(13px, var(--main_text_color), bold, auto); //aprendiendo a usar mixins, cual quier cosa
+                            @include word-bundle(13px, var(--main_text_color), bold, initial); //aprendiendo a usar mixins, cual quier cosa
                             letter-spacing: 0;
                             text-align: center;
                         }
@@ -100,7 +100,6 @@
                             margin: .5rem;
                             color: #9CAFC3;
                         }
-
                     }
                 }
             }
@@ -127,9 +126,10 @@
                     flex-flow: row wrap;
                     width: 90%;
                     .gifArticle{
-                        background-color: lightgrey;
                         position: relative;
                         width: 25%;
+                        display: flex;
+                        justify-content: center;
                         &:hover {
                             .filter, .gifBtns, .gifInfo{
                                 display: initial;
@@ -297,7 +297,7 @@
                         }
                         h4{
                             font-family: 'Montserrat', sans-serif;
-                            font-size: bold;
+                            font-weight: bold;
                             font-size: 25px;
                             color: var(--main_text_color);
                             text-align: center;
@@ -471,16 +471,17 @@
                 }
             }
             // MIS GIFOS
-            .misGifos{
             
-                #ctnOfMyGifos{ //seteo estilos al titulo de la busqueda
+            .misGifos, .favs{
+                #ctnOfMyGifos, #favsCtn{ //seteo estilos al titulo de la busqueda
                     display: flex;
                     flex-flow: row wrap;
                     width: 80%;
                     .gifArticle{
-                        background-color: lightgrey;
                         position: relative;
                         width: 25%;
+                        display: flex;
+                        justify-content: center;
                         &:hover {
                             .filter, .gifBtns, .gifInfo{
                                 display: initial;

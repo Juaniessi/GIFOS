@@ -42,7 +42,7 @@ async function autoCompletar(){
                 palabraSugerida.textContent=sugestion;
                 palabraSugerida.addEventListener("mousedown", ()=> { //agregamos evento click a la barra
                     searchBar.value=sugestion; //llenamos la barra de busqueda
-                    cantClicks=0; //reiniico la cantidad de clicks para el boton "ver mas"
+                    cantClicks=0; //reinicio la cantidad de clicks para el boton "ver mas"
                     doSearch(searchBar.value);
                 });
             });
@@ -55,6 +55,7 @@ async function autoCompletar(){
 
 let gifCardTemplate = document.getElementById("gifCardTemplate").content.firstElementChild; //me traigo el articulo completo dentro del template
 let ctnOfGif = document.getElementById("ctnOfGif");
+let emptyMessageSearch = document.getElementById("emptyMessageSearch");
 let cantClicks = 0;
 
 
@@ -63,7 +64,6 @@ async function doSearch(search){ //función que hace la búsqueda
         let offset = 12*cantClicks;
         const resp = await fetch(`https://api.giphy.com/v1/gifs/search?q=${search}&api_key=${apiKey}&limit=${12}&offset=${offset}`); //ver el limit, esta en 12
         const respParsed = await resp.json();
-        
         if (cantClicks===0){
         ctnOfGif.textContent = "";
         };
@@ -74,7 +74,16 @@ async function doSearch(search){ //función que hace la búsqueda
         moreBtn.classList.remove("hidden");
         respParsed.data.forEach( gif=>{    //recorre el array completo y llena las tarjetas "n" veces con fillinfGifCard
             fillingGifCard(gif, ctnOfGif)}
-            ) 
+            )
+        if (respParsed.data.length === 0 || respParsed.data === null ){
+            emptyMessageSearch.classList.remove("hidden");
+            emptyMessageSearch.classList.add("emptySection");
+            moreBtn.classList.add("hidden");
+        }else{
+            emptyMessageSearch.classList.add("hidden");
+            emptyMessageSearch.classList.remove("emptySection");
+            moreBtn.classList.remove("hidden");
+        }    
     } catch (error) {
         console.log(error);
     }
@@ -140,6 +149,13 @@ let traerImput = document.getElementById("search-bar");
 
 searchBar.addEventListener("focusin", iconSwitch);
 searchBar.addEventListener("focusout", iconUnSwitch);
+
+//buscar haciendo click en la lupa
+
+imgLupa.addEventListener("mousedown", () => {
+    cantClicks = 0;
+    doSearch(searchBar.value)
+});
 
 //función para cuando hago click adentro de la barra
 function iconSwitch(){

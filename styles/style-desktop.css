@@ -55,7 +55,7 @@ html[data-theme='dark'] {
             font-size: 13px;
             color: var(--main_text_color);
             font-weight: bold;
-            line-height: auto;
+            line-height: initial;
             letter-spacing: 0;
             text-align: center; }
           body header nav ul li .btnCrear {
@@ -127,9 +127,10 @@ html[data-theme='dark'] {
       flex-flow: row wrap;
       width: 90%; }
       body main .searchTitleResult #ctnOfGif .gifArticle {
-        background-color: lightgrey;
         position: relative;
-        width: 25%; }
+        width: 25%;
+        display: flex;
+        justify-content: center; }
         body main .searchTitleResult #ctnOfGif .gifArticle:hover .filter, body main .searchTitleResult #ctnOfGif .gifArticle:hover .gifBtns, body main .searchTitleResult #ctnOfGif .gifArticle:hover .gifInfo {
           display: initial;
           position: absolute; }
@@ -266,7 +267,7 @@ html[data-theme='dark'] {
           bottom: 1.5rem; }
         body main .recordGif .articleRecord .videoSquare h4 {
           font-family: 'Montserrat', sans-serif;
-          font-size: bold;
+          font-weight: bold;
           font-size: 25px;
           color: var(--main_text_color);
           text-align: center;
@@ -403,29 +404,30 @@ html[data-theme='dark'] {
         width: 100%;
         height: 20rem;
         margin: 0; }
-  body main .misGifos #ctnOfMyGifos {
+  body main .misGifos #ctnOfMyGifos, body main .misGifos #favsCtn, body main .favs #ctnOfMyGifos, body main .favs #favsCtn {
     display: flex;
     flex-flow: row wrap;
     width: 80%; }
-    body main .misGifos #ctnOfMyGifos .gifArticle {
-      background-color: lightgrey;
+    body main .misGifos #ctnOfMyGifos .gifArticle, body main .misGifos #favsCtn .gifArticle, body main .favs #ctnOfMyGifos .gifArticle, body main .favs #favsCtn .gifArticle {
       position: relative;
-      width: 25%; }
-      body main .misGifos #ctnOfMyGifos .gifArticle:hover .filter, body main .misGifos #ctnOfMyGifos .gifArticle:hover .gifBtns, body main .misGifos #ctnOfMyGifos .gifArticle:hover .gifInfo {
+      width: 25%;
+      display: flex;
+      justify-content: center; }
+      body main .misGifos #ctnOfMyGifos .gifArticle:hover .filter, body main .misGifos #ctnOfMyGifos .gifArticle:hover .gifBtns, body main .misGifos #ctnOfMyGifos .gifArticle:hover .gifInfo, body main .misGifos #favsCtn .gifArticle:hover .filter, body main .misGifos #favsCtn .gifArticle:hover .gifBtns, body main .misGifos #favsCtn .gifArticle:hover .gifInfo, body main .favs #ctnOfMyGifos .gifArticle:hover .filter, body main .favs #ctnOfMyGifos .gifArticle:hover .gifBtns, body main .favs #ctnOfMyGifos .gifArticle:hover .gifInfo, body main .favs #favsCtn .gifArticle:hover .filter, body main .favs #favsCtn .gifArticle:hover .gifBtns, body main .favs #favsCtn .gifArticle:hover .gifInfo {
         display: initial;
         position: absolute; }
-      body main .misGifos #ctnOfMyGifos .gifArticle .gifInfo .gifTitle {
+      body main .misGifos #ctnOfMyGifos .gifArticle .gifInfo .gifTitle, body main .misGifos #favsCtn .gifArticle .gifInfo .gifTitle, body main .favs #ctnOfMyGifos .gifArticle .gifInfo .gifTitle, body main .favs #favsCtn .gifArticle .gifInfo .gifTitle {
         color: #FFFFFF;
         font-size: 1rem; }
-      body main .misGifos #ctnOfMyGifos .gifArticle .gifInfo .gifUser {
+      body main .misGifos #ctnOfMyGifos .gifArticle .gifInfo .gifUser, body main .misGifos #favsCtn .gifArticle .gifInfo .gifUser, body main .favs #ctnOfMyGifos .gifArticle .gifInfo .gifUser, body main .favs #favsCtn .gifArticle .gifInfo .gifUser {
         color: #FFFFFF;
         font-size: .8rem; }
-      body main .misGifos #ctnOfMyGifos .gifArticle .gifBtns {
+      body main .misGifos #ctnOfMyGifos .gifArticle .gifBtns, body main .misGifos #favsCtn .gifArticle .gifBtns, body main .favs #ctnOfMyGifos .gifArticle .gifBtns, body main .favs #favsCtn .gifArticle .gifBtns {
         display: none;
         right: 1rem;
         top: 1rem;
         z-index: 1000; }
-        body main .misGifos #ctnOfMyGifos .gifArticle .gifBtns button {
+        body main .misGifos #ctnOfMyGifos .gifArticle .gifBtns button, body main .misGifos #favsCtn .gifArticle .gifBtns button, body main .favs #ctnOfMyGifos .gifArticle .gifBtns button, body main .favs #favsCtn .gifArticle .gifBtns button {
           cursor: pointer;
           border: 1px solid #CED7E1;
           border-radius: 6px;
@@ -433,10 +435,10 @@ html[data-theme='dark'] {
           opacity: 0.7;
           height: 32px;
           width: 32px; }
-          body main .misGifos #ctnOfMyGifos .gifArticle .gifBtns button .fa-heart, body main .misGifos #ctnOfMyGifos .gifArticle .gifBtns button .fa-download, body main .misGifos #ctnOfMyGifos .gifArticle .gifBtns button .fa-expand-alt, body main .misGifos #ctnOfMyGifos .gifArticle .gifBtns button .fa-trash-alt {
+          body main .misGifos #ctnOfMyGifos .gifArticle .gifBtns button .fa-heart, body main .misGifos #ctnOfMyGifos .gifArticle .gifBtns button .fa-download, body main .misGifos #ctnOfMyGifos .gifArticle .gifBtns button .fa-expand-alt, body main .misGifos #ctnOfMyGifos .gifArticle .gifBtns button .fa-trash-alt, body main .misGifos #favsCtn .gifArticle .gifBtns button .fa-heart, body main .misGifos #favsCtn .gifArticle .gifBtns button .fa-download, body main .misGifos #favsCtn .gifArticle .gifBtns button .fa-expand-alt, body main .misGifos #favsCtn .gifArticle .gifBtns button .fa-trash-alt, body main .favs #ctnOfMyGifos .gifArticle .gifBtns button .fa-heart, body main .favs #ctnOfMyGifos .gifArticle .gifBtns button .fa-download, body main .favs #ctnOfMyGifos .gifArticle .gifBtns button .fa-expand-alt, body main .favs #ctnOfMyGifos .gifArticle .gifBtns button .fa-trash-alt, body main .favs #favsCtn .gifArticle .gifBtns button .fa-heart, body main .favs #favsCtn .gifArticle .gifBtns button .fa-download, body main .favs #favsCtn .gifArticle .gifBtns button .fa-expand-alt, body main .favs #favsCtn .gifArticle .gifBtns button .fa-trash-alt {
             color: var(--deselect-icons-color);
             font-size: 1.3rem; }
-      body main .misGifos #ctnOfMyGifos .gifArticle .filter {
+      body main .misGifos #ctnOfMyGifos .gifArticle .filter, body main .misGifos #favsCtn .gifArticle .filter, body main .favs #ctnOfMyGifos .gifArticle .filter, body main .favs #favsCtn .gifArticle .filter {
         background-color: #572EE5;
         opacity: 0.7;
         display: none;
@@ -444,7 +446,7 @@ html[data-theme='dark'] {
         height: 100%;
         top: 0;
         left: 0; }
-      body main .misGifos #ctnOfMyGifos .gifArticle .gifLoadedCtn .gifLoaded {
+      body main .misGifos #ctnOfMyGifos .gifArticle .gifLoadedCtn .gifLoaded, body main .misGifos #favsCtn .gifArticle .gifLoadedCtn .gifLoaded, body main .favs #ctnOfMyGifos .gifArticle .gifLoadedCtn .gifLoaded, body main .favs #favsCtn .gifArticle .gifLoadedCtn .gifLoaded {
         width: 100%;
         height: 20rem; }
   body main .hidden {
