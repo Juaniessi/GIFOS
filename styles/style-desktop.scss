@@ -203,14 +203,14 @@
                         border: 1px solid var(--fancy_border);
                         background: var(--bg-carousel);
                         .fa-chevron-left, .fa-chevron-right{
-                            color: var(--primary-color);
+                            color: var(--small_text_color);
                             font-size: 1.25rem;
                             &:hover{
                                 color: var(--icon-hover-color);
                             }
                         }
                         &:hover{
-                            background-color: var(--primary-color);
+                            background-color: var(--small_text_color);
                         }
                     }
                     .carousel-ctn{
