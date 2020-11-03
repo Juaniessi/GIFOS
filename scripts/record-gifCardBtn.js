@@ -342,4 +342,3 @@ function downloadCreatedGif() {
 	a.dataset.downloadurl = ['application/octet-stream', a.download, a.href].join(':');
 	a.click()
 }
-
